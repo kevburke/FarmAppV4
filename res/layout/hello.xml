@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:weightSum="1"
+		android:id="@+id/lay1">
+	<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="96dp"
+			android:layout_weight="0.14"
+			android:id="@+id/lay"
+			android:weightSum="1">
+		<TextView android:layout_width="wrap_content"
+				  android:layout_height="37dp"
+				  android:textAppearance="?android:attr/textAppearanceLarge"
+				  android:text="Read Ear Tag"
+				  android:id="@+id/textView3"
+				  android:layout_weight="0.09"/>
+		<Button
+                android:layout_width="94dp"
+                android:layout_height="wrap_content"
+                android:text="Scan"
+                android:onClick="scanNow"
+                android:id="@+id/scanButn"
+				android:layout_weight="0.01"/>
+	</LinearLayout>
+	<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="67dp"
+			android:layout_gravity="center_horizontal"
+			android:weightSum="1"
+			android:id="@+id/lay2">
+		<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Enter ID"
+                android:id="@+id/textView"
+				android:layout_weight="0.33"/>
+		<EditText
+				android:layout_width="125dp"
+				android:layout_height="wrap_content"
+				android:id="@+id/editText2"/>
+	</LinearLayout>
+	<Button
+			android:layout_width="99dp"
+			android:layout_height="wrap_content"
+			android:text="Search"
+			android:id="@+id/button"
+			android:layout_gravity="center_horizontal"/>
+
+	<Button android:layout_width="99dp"
+			android:layout_height="wrap_content"
+			android:text="Bull List"
+			android:id="@+id/button2"
+			android:layout_gravity="center_horizontal"
+			android:layout_weight="0.04"/>
+</LinearLayout>

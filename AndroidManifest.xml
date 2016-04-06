@@ -125,6 +125,7 @@
         <activity android:name="com.android.loginapp.SearchResult" android:label="searchresult"/>
         <activity android:name="com.android.loginapp.BullSearch" android:label="BullSearch"/>
         <activity android:name="com.android.loginapp.BullSelect" android:label="bullSel"/>
+        <activity android:name="com.android.loginapp.BullPicked" android:label="bullpicked"/>
     </application>
 
 </manifest>

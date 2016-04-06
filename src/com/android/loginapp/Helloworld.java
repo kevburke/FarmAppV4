@@ -38,8 +38,6 @@ public class Helloworld extends Activity {
     }
 
 
-
-
     public void openCapture() {
         Intent intent = new Intent(this, CaptureActivity.class);
         startActivity(intent);

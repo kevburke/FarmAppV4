@@ -31,17 +31,17 @@ public class BullSelect extends Activity {
     TextView textView19;
     TextView textView20;
     TextView textView21;
-
+    String type;
+    String name;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bullsel);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String type;
-        String name;
 
-        String [] listElements = new String[40];
+
+        String [] listElements = new String[80];
         String[] details = new String[5];
         details[0] = bundle.getString("1");         //type
         details[1] = bundle.getString("2");         //Breed
@@ -146,18 +146,21 @@ public class BullSelect extends Activity {
 
                     @Override
                     public void onClick(View v) {
+
                         Intent in = new Intent(BullSelect.this, BullPicked.class);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("1",type);
+                        bundle.putString("2",name);
+                        bundle.putString("3",BullName);
+                        in.putExtras(bundle);
                         startActivity(in);
 
                     }
                 });
                // popupWindow.showAsDropDown(view, 100, 50);
                 popupWindow.showAtLocation(view,80,50,50);
-
             }}
             );
-
-
-
     }
 }

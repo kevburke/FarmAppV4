@@ -250,8 +250,8 @@ public class login extends Activity {
 			json.put("username",outUser);
 			json.put("password",outPass);
 
-			//String baseUrl = "http://10.12.11.250:8080/InputOutput";
-			String baseUrl = "http://192.168.1.4:8080/InputOutput";
+			String baseUrl = "http://10.12.11.250:8080/InputOutput";
+			//String baseUrl = "http://192.168.1.4:8080/InputOutput";
 			new HttpAsyncTask().execute(baseUrl, json.toString());
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -703,7 +703,6 @@ public class login extends Activity {
 			Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
 		}
 
-
 	}
 
 	/**
@@ -758,7 +757,6 @@ public class login extends Activity {
 					+ " daughter_calv_int_rel  text"
 					+ ");  ");
 
-
 			//commit your changes
 			db.setTransactionSuccessful();
 
@@ -768,7 +766,6 @@ public class login extends Activity {
 		finally {
 			db.endTransaction();
 		}
-
 
 	}
 
@@ -817,7 +814,6 @@ public class login extends Activity {
 			db.endTransaction();
 		}
 
-
 	}
 	/**
 	 * Deals with inserting returned data from Terminal Bulls
@@ -854,7 +850,6 @@ public class login extends Activity {
 						"' , '"+TPrice[i]+
 						"' , '"+TSupplier[i]+"');" );
 			}
-
 			//commit your changes
 			db.setTransactionSuccessful();
 
@@ -865,8 +860,6 @@ public class login extends Activity {
 			db.endTransaction();
 			Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
 		}
-
-
 	}
 
 	/**
@@ -905,7 +898,6 @@ public class login extends Activity {
 					+ " MSupplier  text"
 					+ ");  ");
 
-
 			//commit your changes
 			db.setTransactionSuccessful();
 
@@ -915,8 +907,6 @@ public class login extends Activity {
 		finally {
 			db.endTransaction();
 		}
-
-
 	}
 
 	/**
@@ -953,7 +943,6 @@ public class login extends Activity {
 						"' , '"+MPrice[i]+
 						"' , '"+MSupplier[i]+"');" );
 			}
-
 			//commit your changes
 			db.setTransactionSuccessful();
 
@@ -964,7 +953,5 @@ public class login extends Activity {
 			db.endTransaction();
 			Toast.makeText(getBaseContext(), "DataBase Mat Done", Toast.LENGTH_LONG).show();
 		}
-
-
 	}
 }

@@ -5,7 +5,7 @@
               android:orientation="vertical"
               android:background="@android:color/background_light" android:weightSum="1">
     <RelativeLayout
-            android:layout_width="264dp"
+            android:layout_width="218dp"
             android:layout_height="157dp"
             android:orientation="vertical"
             android:background="@android:color/darker_gray"
@@ -35,11 +35,8 @@
                 android:layout_height="27dp"
                 android:text="Dismiss"
                 android:layout_weight="0.34"
-                android:layout_alignTop="@+id/select"
-                android:layout_alignLeft="@+id/linearLayout"
-                android:layout_alignStart="@+id/linearLayout"
-                android:layout_alignBottom="@+id/select"
-                android:layout_centerHorizontal="true"/>
+                android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:layout_alignTop="@+id/select"/>
         <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="103dp"
@@ -48,8 +45,8 @@
                 android:id="@+id/select"
 
                 android:layout_gravity="right"
-                android:layout_alignParentBottom="true" android:layout_toRightOf="@+id/textView21"
-                android:layout_toEndOf="@+id/textView21"/>
+                android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

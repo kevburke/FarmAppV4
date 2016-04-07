@@ -4,10 +4,195 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:weightSum="1">
 
-    <TextView
-            android:layout_width="297dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView16" android:layout_weight="0.23"/>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calf Test"
+                android:id="@+id/textView16" android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jumbo id:"
+                android:id="@+id/textView22"
+                android:layout_above="@+id/textView24" android:layout_alignLeft="@+id/textView24"
+                android:layout_alignStart="@+id/textView24"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView23"
+                android:layout_below="@+id/textView28" android:layout_alignLeft="@+id/textView16"
+                android:layout_alignStart="@+id/textView16"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Animal id:"
+                android:id="@+id/textView24"
+                android:layout_below="@+id/textView23" android:layout_alignRight="@+id/textView30"
+                android:layout_alignEnd="@+id/textView30"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView25"
+                android:layout_above="@+id/textView26" android:layout_alignLeft="@+id/textView23"
+                android:layout_alignStart="@+id/textView23"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sex:"
+                android:id="@+id/textView26"
+                android:layout_below="@+id/textView24" android:layout_alignRight="@+id/textView30"
+                android:layout_alignEnd="@+id/textView30"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView27"
+                android:layout_alignTop="@+id/textView26" android:layout_alignLeft="@+id/textView25"
+                android:layout_alignStart="@+id/textView25"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView29"
+                android:layout_below="@+id/textView27" android:layout_alignLeft="@+id/textView27"
+                android:layout_alignStart="@+id/textView27"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dam id;"
+                android:id="@+id/textView30"
+                android:layout_below="@+id/textView26" android:layout_alignRight="@+id/textView31"
+                android:layout_alignEnd="@+id/textView31"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ReplaceStar"
+                android:id="@+id/textView31"
+                android:layout_below="@+id/textView30" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar2"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_below="@+id/textView29" android:layout_alignLeft="@+id/textView29"
+                android:layout_alignStart="@+id/textView29"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="replaceStar"
+                android:id="@+id/textView33"
+                android:layout_below="@+id/ratingBar2" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView34"
+                android:layout_below="@+id/textView31" android:layout_alignLeft="@+id/ratingBar2"
+                android:layout_alignStart="@+id/ratingBar2"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DAM"
+                android:id="@+id/textView28"
+                android:layout_below="@+id/textView16" android:layout_centerHorizontal="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SIRE"
+                android:id="@+id/textView32"
+                android:layout_marginTop="40dp"
+                android:layout_below="@+id/textView34" android:layout_alignLeft="@+id/textView28"
+                android:layout_alignStart="@+id/textView28"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rank"
+                android:id="@+id/textView35" android:layout_below="@+id/textView32"
+                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Code"
+                android:id="@+id/textView36"
+                android:layout_below="@+id/textView35" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:id="@+id/textView37"
+                android:layout_below="@+id/textView36" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breed"
+                android:id="@+id/textView38"
+                android:layout_below="@+id/textView37" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stars Within"
+                android:id="@+id/textView39" android:layout_below="@+id/textView38"
+                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView40"
+                android:layout_above="@+id/textView36" android:layout_alignLeft="@+id/textView42"
+                android:layout_alignStart="@+id/textView42"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView41"
+                android:layout_below="@+id/textView40" android:layout_alignLeft="@+id/textView40"
+                android:layout_alignStart="@+id/textView40"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView42"
+                android:layout_below="@+id/textView41" android:layout_alignLeft="@+id/textView43"
+                android:layout_alignStart="@+id/textView43"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView43"
+                android:layout_below="@+id/textView42" android:layout_alignLeft="@+id/ratingBar4"
+                android:layout_alignStart="@+id/ratingBar4"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stars Across"
+                android:id="@+id/textView44"
+                android:layout_below="@+id/textView39"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar3"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_above="@+id/ratingBar4" android:layout_alignLeft="@+id/ratingBar4"
+                android:layout_alignStart="@+id/ratingBar4"/>
+        <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar4"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_alignTop="@+id/textView44" android:layout_alignLeft="@+id/textView32"
+                android:layout_alignStart="@+id/textView32"/>
+    </RelativeLayout>
 </LinearLayout>

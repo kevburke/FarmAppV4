@@ -3,6 +3,7 @@ package com.android.loginapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -76,7 +77,7 @@ public class SearchResult extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searchresult);
-
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         rb_small = (RatingBar)findViewById(R.id.ratingBar);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);

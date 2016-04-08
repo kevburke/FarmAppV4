@@ -6,7 +6,8 @@
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/lay5">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -205,7 +206,8 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mate"
+                android:text="Test Mate"
+                android:onClick="mate"
                 android:id="@+id/button7"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
@@ -249,5 +251,19 @@
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_alignLeft="@+id/ratingBar5"
                 android:layout_alignStart="@+id/ratingBar5"/>
+        <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Date"
+                android:id="@+id/button10"
+                android:layout_above="@+id/button6" android:layout_alignLeft="@+id/ratingBar6"
+                android:layout_alignStart="@+id/ratingBar6"/>
+        <DatePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/datePicker"
+                android:layout_below="@+id/textView31" android:layout_alignLeft="@+id/textView33"
+                android:layout_alignStart="@+id/textView33"/>
     </RelativeLayout>
 </LinearLayout>

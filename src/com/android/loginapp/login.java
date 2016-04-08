@@ -1,6 +1,7 @@
 package com.android.loginapp;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -148,6 +149,7 @@ public class login extends Activity {
 	}
 
 
+
 	private void initControls() {
 		//Set the activity layout.
 
@@ -250,8 +252,8 @@ public class login extends Activity {
 			json.put("username",outUser);
 			json.put("password",outPass);
 
-			//String baseUrl = "http://10.12.11.250:8080/InputOutput";
-			String baseUrl = "http://192.168.1.4:8080/InputOutput";
+			String baseUrl = "http://10.12.11.250:8080/InputOutput";
+			//String baseUrl = "http://192.168.1.4:8080/InputOutput";
 			new HttpAsyncTask().execute(baseUrl, json.toString());
 		} catch (JSONException e) {
 			e.printStackTrace();

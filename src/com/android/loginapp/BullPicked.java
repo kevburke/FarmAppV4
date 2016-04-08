@@ -1,6 +1,7 @@
 package com.android.loginapp;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -8,9 +9,15 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import com.ofix.barcode.R;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Kev on 06/04/2016.
@@ -82,8 +89,7 @@ public class BullPicked extends Activity {
     TextView textView42;
     TextView textView43;
 
-
-
+    private static final Logger logger = Logger.getLogger("logger");
     public TextView textView16;
     public static final String MY_PREFS = "SharedPreferences";
     private RatingBar ratingBar2;
@@ -188,6 +194,7 @@ public class BullPicked extends Activity {
         System.out.println(type);
         System.out.println(name);
         System.out.println(animalName);
+
         db2 = openOrCreateDatabase(path, MODE_PRIVATE, null);
         //SQLiteDatabase db2 = this.openOrCreateDatabase("ICBF", MODE_PRIVATE, null);
         db2.beginTransaction();
@@ -256,4 +263,32 @@ public class BullPicked extends Activity {
         awayStar = Double.parseDouble(TStarsAcross);
         ratingBar4.setRating((int)awayStar);
     }
+
+
+
+    public void mate(View view) {
+        logger.log(Level.INFO, "button works!");
+
+        Intent intent = new Intent(BullPicked.this, DateDialog.class);
+        startActivity(intent);
+
+        Log.d("BullSearch", "button works!");
+    }
+    public void onStart(){
+        super.onStart();
+        EditText txtDate = (EditText)findViewById(R.id.txtdate);
+        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if (hasFocus) {
+                    DateDialog dialog = new DateDialog(v);
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    dialog.show(ft, "DatePicker");
+                }
+            }
+        });
+
+    }
+
 }

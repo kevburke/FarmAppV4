@@ -46,7 +46,7 @@ public class BullSelect extends Activity {
         details[0] = bundle.getString("1");         //type
         details[1] = bundle.getString("2");         //Breed
         details[2] = bundle.getString("3");         //Ratings
-        details[3] = bundle.getString("4");         //CalvingRating
+        details[3] = bundle.getString("4");         //ratings across
         details[4] = bundle.getString("5");         //Gestation
 
         TextView textView17 = (TextView) findViewById(R.id.textView17);
@@ -63,7 +63,7 @@ public class BullSelect extends Activity {
             type = "BullsMaternal";
             name = "MBullName";
         }
-
+        System.out.println("**************"+details[0]+" "+details[1]+" "+details[2]+" "+details[3]);
         String path = "ICBF";
         db = this.openOrCreateDatabase(path, MODE_PRIVATE, null);
 
@@ -72,7 +72,7 @@ public class BullSelect extends Activity {
         db.beginTransaction();
         //if (details[0].equals("Terminal")) {                                                         //+" AND "+ "TStarsWithin="+ details[2]
             try {
-                Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"'",null);
+                Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin='"+ details[2]+"' AND TStarsAcross='"+ details[3]+"'",null);
                 cur.moveToFirst();
                 int ii=0;
                 while(! cur.isLast()) {
@@ -80,7 +80,8 @@ public class BullSelect extends Activity {
                     listElements[ii++]=cur.getString(3);
                     cur.moveToNext();
                 }
-
+                bullAdapter.add(cur.getString(3));
+                listElements[ii]=cur.getString(3);
                 db.setTransactionSuccessful();
 
 
@@ -102,8 +103,8 @@ public class BullSelect extends Activity {
 
 
                 db2.beginTransaction();
-
-                try{
+                System.out.println("***************"+position+"***********************");
+                try{                                     //type=BllsTerminal name=TBullname
                     Cursor cur =  db2.rawQuery("SELECT * FROM "+type+" WHERE "+name+"='" + listElements[position]+"'", null);
                     cur.moveToFirst();
                     BullName = cur.getString(3);
@@ -126,6 +127,8 @@ public class BullSelect extends Activity {
                         popupView,
                         ActionBar.LayoutParams.WRAP_CONTENT,
                         ActionBar.LayoutParams.WRAP_CONTENT);
+
+
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView18)).setText(BullName);
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView19)).setText(StarsWithin);
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView20)).setText(CarcassWeight);

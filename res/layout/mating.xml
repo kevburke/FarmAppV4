@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_gravity="center_horizontal">
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mate"
+                android:id="@+id/button8" android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/textView47" android:layout_alignTop="@+id/button9"
+                android:layout_toRightOf="@+id/textView47"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Return"
+                android:id="@+id/button9" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:layout_toLeftOf="@+id/textView47"
+                android:layout_toStartOf="@+id/textView47"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView47" android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtdate"
+                android:hint="Touch here to select a date"
+                android:layout_below="@+id/textView47"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/textView47"
+                android:layout_alignEnd="@+id/textView47"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -22,11 +22,11 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
     private RadioButton radioButton3;
     private RadioButton radioButton4;
     private RadioButton radioButton5;
-    private String Type = "*";
-    private String Breed ="*";
-    private String Ratings ="*";
-    private String CalvingRating ="*";
-    private String Gestation ="*";
+    private String Type = "ANY";
+    private String Breed ="ANY";
+    private String Ratings ="ANY";
+    private String RatingsAc ="ANY";
+    private String CalvingRating ="ANY";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,6 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
         categories.add("Terminal");
         categories.add("Replacement");
 
-
         // Spinner2 Drop down elements
         List<String> categories2 = new ArrayList<String>();
         categories2.add("Breed");
@@ -70,7 +69,7 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
 
         // Spinner3 Drop down elements
         List<String> categories3 = new ArrayList<String>();
-        categories3.add("Ratings");
+        categories3.add("Ratings Within");
         categories3.add("1 Star");
         categories3.add("2 Stars");
         categories3.add("3 Stars");
@@ -79,7 +78,7 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
 
         // Spinner4 Drop down elements
         List<String> categories4 = new ArrayList<String>();
-        categories4.add("Calving Rating");
+        categories4.add("Rating Across");
         categories4.add("1 Star");
         categories4.add("2 Stars");
         categories4.add("3 Stars");
@@ -88,14 +87,12 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
 
         // Spinner5 Drop down elements
         List<String> categories5 = new ArrayList<String>();
-        categories5.add("Gestation");
+        categories5.add("Calving Rating");
         categories5.add("1 Star");
         categories5.add("2 Stars");
         categories5.add("3 Stars");
         categories5.add("4 Stars");
         categories5.add("5 Stars");
-
-
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
@@ -198,15 +195,38 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
         if (spinner.getId()==R.id.spinner3) {
             if(S == "1 Star" || S == "2 Stars" || S == "3 Stars"
                     || S == "4 Stars" || S == "5 Stars"){
-                Ratings = S;
+                String myRate = S;
+                if(myRate.equals("1 Star"))
+                    Ratings = "1.0";
+                if(myRate.equals("2 Stars"))
+                    Ratings = "2.0";
+                if(myRate.equals("3 Stars"))
+                    Ratings = "3.0";
+                if(myRate.equals("4 Stars"))
+                    Ratings = "4.0";
+                if(myRate.equals("5 Stars"))
+                    Ratings = "5.0";
+
                 if (!(radioButton3.isChecked()))
                     radioButton3.toggle();
             }
         }
+
         if (spinner.getId()==R.id.spinner4) {
             if(S == "1 Star" || S == "2 Stars" || S == "3 Stars"
                     || S == "4 Stars" || S == "5 Stars"){
-                CalvingRating = S;
+                String myArating = S;
+                if(myArating.equals("1 Star"))
+                    RatingsAc ="1.0";
+                if(myArating.equals("2 Stars"))
+                    RatingsAc ="2.0";
+                if(myArating.equals("3 Stars"))
+                    RatingsAc ="3.0";
+                if(myArating.equals("4 Stars"))
+                    RatingsAc ="4.0";
+                if(myArating.equals("5 Stars"))
+                    RatingsAc ="5.0";
+
                 if (!(radioButton4.isChecked()))
                     radioButton4.toggle();
             }
@@ -214,22 +234,11 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
         if (spinner.getId()==R.id.spinner5) {
             if(S == "1 Star" || S == "2 Stars" || S == "3 Stars"
                     || S == "4 Stars" || S == "5 Stars"){
-                Gestation =S;
+                CalvingRating = S;
                 if (!(radioButton5.isChecked()))
                     radioButton5.toggle();
             }
         }
-
-
-//        if(Rating != "Ratings"){
-//            if (!(radioButton3.isChecked()))
-//                radioButton3.toggle();
-//        }
-//        if(CalvDiff != "Calving Rating"){
-//            if (!(radioButton4.isChecked()))
-//                radioButton4.toggle();
-//        }
-
     }
 
     @Override
@@ -249,8 +258,8 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
              bundle.putString("1", Type);
              bundle.putString("2", Breed);
              bundle.putString("3", Ratings);
-             bundle.putString("4", CalvingRating);
-             bundle.putString("5", Gestation);
+             bundle.putString("4", RatingsAc);
+             bundle.putString("5", CalvingRating);
              intent.putExtras(bundle);
              startActivity(intent);
 

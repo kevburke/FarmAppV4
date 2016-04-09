@@ -31,7 +31,7 @@
         <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtdate"
+                android:id="@+id/txt4date"
                 android:hint="Touch here to select a date"
                 android:layout_below="@+id/textView47"
                 android:layout_alignParentLeft="true"

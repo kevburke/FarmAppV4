@@ -1,7 +1,7 @@
 package com.android.loginapp;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import com.ofix.barcode.R;
@@ -22,7 +21,7 @@ import java.util.logging.Logger;
 /**
  * Created by Kev on 06/04/2016.
  */
-public class BullPicked extends Activity {
+public class BullPicked extends Activity implements DateDialog.TheListener {
     String jumbo;
     String num;
     String sex;
@@ -88,6 +87,7 @@ public class BullPicked extends Activity {
     TextView textView41;
     TextView textView42;
     TextView textView43;
+    TextView textView49;
 
     private static final Logger logger = Logger.getLogger("logger");
     public TextView textView16;
@@ -250,6 +250,8 @@ public class BullPicked extends Activity {
         textView41 = (TextView) findViewById(R.id.textView41);
         textView42 = (TextView) findViewById(R.id.textView42);
         textView43 = (TextView) findViewById(R.id.textView43);
+        textView49 = (TextView) findViewById(R.id.textView49);
+
         textView40.setText(TRank);
         textView41.setText(TCode);
         textView42.setText(TBullName);
@@ -262,6 +264,9 @@ public class BullPicked extends Activity {
         ratingBar3.setRating((int) ownStar);
         awayStar = Double.parseDouble(TStarsAcross);
         ratingBar4.setRating((int)awayStar);
+
+
+
     }
 
 
@@ -274,21 +279,21 @@ public class BullPicked extends Activity {
 
         Log.d("BullSearch", "button works!");
     }
-    public void onStart(){
-        super.onStart();
-        EditText txtDate = (EditText)findViewById(R.id.txtdate);
-        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
 
-                if (hasFocus) {
-                    DateDialog dialog = new DateDialog(v);
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    dialog.show(ft, "DatePicker");
-                }
-            }
-        });
 
+    public void SetDate(View v) {
+        DialogFragment picker = new DateDialog();
+        picker.show(getFragmentManager(), "datePicker");
+
+
+    }
+    @Override
+    public void returnDate(String date) {
+        // TODO Auto-generated method stub
+        System.out.println("****************************************In function return*************");
+        textView49.setText(date);
     }
 
 }
+
+

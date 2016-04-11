@@ -15,9 +15,8 @@ import java.util.logging.Logger;
 /**
  * Created by Kev on 29/03/2016.
  */
-public class BullSearch extends Activity implements AdapterView.OnItemSelectedListener {
+public class ViewBullList extends Activity implements AdapterView.OnItemSelectedListener {
     private static final Logger logger = Logger.getLogger("logger");
-    EditText editBull;
     private RadioButton radioButton;
     private RadioButton radioButton2;
     private RadioButton radioButton3;
@@ -28,7 +27,6 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
     private String Ratings ="ANY";
     private String RatingsAc ="ANY";
     private String CalvingRating ="ANY";
-    private String Code = "ANY";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,6 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
         Spinner spinner3 =(Spinner) findViewById(R.id.spinner3);
         Spinner spinner4 =(Spinner) findViewById(R.id.spinner4);
         Spinner spinner5 =(Spinner) findViewById(R.id.spinner5);
-        //Spinner spinner6 =(Spinner) findViewById(R.id.spinner6);
 
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
@@ -47,7 +44,6 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
         spinner3.setOnItemSelectedListener(this);
         spinner4.setOnItemSelectedListener(this);
         spinner5.setOnItemSelectedListener(this);
-        //spinner6.setOnItemSelectedListener(this);
 
         // Spinner1 Drop down elements
         List<String> categories = new ArrayList<String>();
@@ -120,13 +116,11 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
         spinner4.setAdapter(dataAdapter4);
         spinner5.setAdapter(dataAdapter5);
 
-        editBull =(EditText) findViewById(R.id.editBull);
-
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-       Spinner spinner = (Spinner) parent;
+        Spinner spinner = (Spinner) parent;
 
         String S = parent.getItemAtPosition(position).toString();
         //String Breed = parent.getItemAtPosition(position).toString();
@@ -144,53 +138,53 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
         radioButton5 = (RadioButton) findViewById(R.id.radioButton5);
 
         //if(parent.getItemAtPosition(position).toString()=="Type") {
-            if (spinner.getId() == R.id.spinner) {
-                if(S == "Terminal" || S == "Replacement") {
-                    Type = S;
-                    System.out.println("***************** Im In d loop**********************");
-                    if (!(radioButton.isChecked())) {
-                        System.out.println("***************** Toggle **********************");
-                        radioButton.toggle();
-                    }
-                }
-                else if(S=="Type"){
-                    radioButton.setChecked(false);
+        if (spinner.getId() == R.id.spinner) {
+            if(S == "Terminal" || S == "Replacement") {
+                Type = S;
+                System.out.println("***************** Im In d loop**********************");
+                if (!(radioButton.isChecked())) {
+                    System.out.println("***************** Toggle **********************");
+                    radioButton.toggle();
                 }
             }
+            else if(S=="Type"){
+                radioButton.setChecked(false);
+            }
+        }
         //}
-       // if(parent.getItemAtPosition(position).toString()=="Breed") {
-            if (spinner.getId()==R.id.spinner2) {
-                if(S == "AUNGUS" || S == "AUBRAC" || S == "BLONDE D’AQUITANE"
-                        || S == "BELIGUM BLUE" || S == "CHAROLAIS"|| S == "HEREFORD"
-                        || S == "LIMOUSIN"|| S == "PARTHENAISE"|| S == "SALERS"
-                        || S == "SHORTHORN"|| S == "SIMMENTAL"|| S == "WAGYU") {
-                    String myBreed =S;
-                    if(myBreed=="AUNGUS")
-                        Breed = "AA";
-                    if(myBreed=="AUBRAC")
-                        Breed = "AU";
-                    if(myBreed=="BLONDE D’AQUITANE")
-                        Breed = "BA";
-                    if(myBreed=="BELIGUM BLUE")
-                        Breed = "BB";
-                    if(myBreed=="CHAROLAIS")
-                        Breed = "CH";
-                    if(myBreed=="HEREFORD")
-                        Breed = "HE";
-                    if(myBreed=="LIMOUSIN")
-                        Breed = "LM";
-                    if(myBreed=="PARTHENAISE")
-                        Breed = "AA";
-                    if(myBreed=="SAILOR")
-                        Breed = "PT";
-                    if(myBreed=="SALERS")
-                        Breed = "SA";
-                    if(myBreed=="SHORTHORN")
-                        Breed = "SH";
-                    if(myBreed=="SIMMENTAL")
-                        Breed = "SI";
-                    if(myBreed=="WAGYU")
-                        Breed = "WA";
+        // if(parent.getItemAtPosition(position).toString()=="Breed") {
+        if (spinner.getId()==R.id.spinner2) {
+            if(S == "AUNGUS" || S == "AUBRAC" || S == "BLONDE D’AQUITANE"
+                    || S == "BELIGUM BLUE" || S == "CHAROLAIS"|| S == "HEREFORD"
+                    || S == "LIMOUSIN"|| S == "PARTHENAISE"|| S == "SALERS"
+                    || S == "SHORTHORN"|| S == "SIMMENTAL"|| S == "WAGYU") {
+                String myBreed =S;
+                if(myBreed=="AUNGUS")
+                    Breed = "AA";
+                if(myBreed=="AUBRAC")
+                    Breed = "AU";
+                if(myBreed=="BLONDE D’AQUITANE")
+                    Breed = "BA";
+                if(myBreed=="BELIGUM BLUE")
+                    Breed = "BB";
+                if(myBreed=="CHAROLAIS")
+                    Breed = "CH";
+                if(myBreed=="HEREFORD")
+                    Breed = "HE";
+                if(myBreed=="LIMOUSIN")
+                    Breed = "LM";
+                if(myBreed=="PARTHENAISE")
+                    Breed = "AA";
+                if(myBreed=="SAILOR")
+                    Breed = "PT";
+                if(myBreed=="SALERS")
+                    Breed = "SA";
+                if(myBreed=="SHORTHORN")
+                    Breed = "SH";
+                if(myBreed=="SIMMENTAL")
+                    Breed = "SI";
+                if(myBreed=="WAGYU")
+                    Breed = "WA";
 
                 if (!(radioButton2.isChecked())) {
                     System.out.println("***************** Toggle 2**********************");
@@ -251,27 +245,26 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-     public void Refine(View view) {
+    public void Refine(View view) {
         logger.log(Level.INFO, "button works!");
-         if(Type=="Type"){
-             Toast.makeText(getBaseContext(), "Select Type", Toast.LENGTH_LONG).show();
-         }
-         else {
+        if(Type=="Type"){
+            Toast.makeText(getBaseContext(), "Select Type", Toast.LENGTH_LONG).show();
+        }
+        else {
 
-             Intent intent = new Intent(BullSearch.this, BullSelect.class);
-             Bundle bundle = new Bundle();
+            Intent intent = new Intent(ViewBullList.this, FilterViewBullList.class);
+            Bundle bundle = new Bundle();
 
-             bundle.putString("1", Type);
-             bundle.putString("2", Breed);
-             bundle.putString("3", Ratings);
-             bundle.putString("4", RatingsAc);
-             bundle.putString("5", CalvingRating);
-             bundle.putString("6", Code);
-             intent.putExtras(bundle);
-             startActivity(intent);
+            bundle.putString("1", Type);
+            bundle.putString("2", Breed);
+            bundle.putString("3", Ratings);
+            bundle.putString("4", RatingsAc);
+            bundle.putString("5", CalvingRating);
+            intent.putExtras(bundle);
+            startActivity(intent);
 
-             Log.d("test", "button works!");
-         }
+            Log.d("test", "button works!");
+        }
     }
 
 }

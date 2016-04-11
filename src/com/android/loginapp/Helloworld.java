@@ -70,13 +70,13 @@ public class Helloworld extends Activity {
         startActivity(in);
 
     }
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data){
-//        super.onActivityResult(requestCode,resultCode,data);
-//        if (resultCode == Activity.RESULT_OK) if (requestCode == 101) {
-//
-//        }
-//    }
+    public void bullList(View view){
+
+        Intent in = new Intent(Helloworld.this, ViewBullList.class);
+        startActivity(in);
+
+    }
+
 }
 
 

@@ -128,6 +128,8 @@
         <activity android:name="com.android.loginapp.BullPicked" android:label="bullpicked"/>
         <activity android:name="com.android.loginapp.Mating" android:label="mating"/>
         <activity android:name="com.android.loginapp.DateDialog" android:label="date"/>
+        <activity android:name="com.android.loginapp.ViewBullList" android:label="bulllist"/>
+        <activity android:name="com.android.loginapp.FilterViewBullList" android:label="filterviewbulllist"/>
     </application>
 
 </manifest>

@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Kev on 04/04/2016.
  */
-public class BullSelect extends Activity {
+public class FilterViewBullList extends Activity {
     SQLiteDatabase db;
     SQLiteDatabase db2;
     TextView textView17;
@@ -42,13 +42,12 @@ public class BullSelect extends Activity {
 
 
         String [] listElements = new String[80];
-        String[] details = new String[6];
+        String[] details = new String[5];
         details[0] = bundle.getString("1");         //type
         details[1] = bundle.getString("2");         //Breed
         details[2] = bundle.getString("3");         //Ratings
         details[3] = bundle.getString("4");         //ratings across
         details[4] = bundle.getString("5");         //Gestation
-        details[5] = bundle.getString("6");         //code
 
         TextView textView17 = (TextView) findViewById(R.id.textView17);
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -56,8 +55,6 @@ public class BullSelect extends Activity {
                 android.R.layout.simple_list_item_1);
         textView17.setText("Filtered by: " + details[0] + "\n" + details[1] + "\n" + details[2] + "\n" + details[3] + "\n" +
                 details[4]);
-
-
         if(details[0].equals("Terminal")) {
             type = "BullsTerminal";
             name = "TBullName";
@@ -70,52 +67,29 @@ public class BullSelect extends Activity {
         String path = "ICBF";
         db = this.openOrCreateDatabase(path, MODE_PRIVATE, null);
 
-       // bullAdapter.add("adfsghfgjh");
+        // bullAdapter.add("adfsghfgjh");
         System.out.println("at the query *********");
         db.beginTransaction();
         //if (details[0].equals("Terminal")) {                                                         //+" AND "+ "TStarsWithin="+ details[2]
-            try {
-                Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin>='"+ details[2]+"' AND TStarsAcross>='"+ details[3]+"'",null);
-                if(cur !=null) {
-                    cur.moveToFirst();
-
-                    int ii = 0;
-                    while (!cur.isLast()) {
-                                if(cur !=null) {
-                                    bullAdapter.add(cur.getString(3));
-                                    listElements[ii++] = cur.getString(3);
-                                    cur.moveToNext();
-                        }
-                        else{
-                            db.setTransactionSuccessful();
-                            Toast.makeText(getApplicationContext(),
-                                    "This selection is not available.",
-                                    Toast.LENGTH_SHORT).show();
-                            Intent in = new Intent(BullSelect.this, BullSearch.class);
-                            startActivity(in);
-                        }
-
-                    }
-                    bullAdapter.add(cur.getString(3));
-                    listElements[ii] = cur.getString(3);
-
-                    db.setTransactionSuccessful();
-                }else{
-                        db.setTransactionSuccessful();
-                        Toast.makeText(getApplicationContext(),
-                                "This selection is not available.",
-                                Toast.LENGTH_SHORT).show();
-                        Intent in = new Intent(BullSelect.this, BullSearch.class);
-                        startActivity(in);
-                    }
-
-            } catch (SQLException e) {
-                System.out.println("***********In Catch**********");
-
-
-            } finally {
-                db.endTransaction();
+        try {
+            Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin='"+ details[2]+"' AND TStarsAcross='"+ details[3]+"'",null);
+            cur.moveToFirst();
+            int ii=0;
+            while(! cur.isLast()) {
+                bullAdapter.add(cur.getString(3));
+                listElements[ii++]=cur.getString(3);
+                cur.moveToNext();
             }
+            bullAdapter.add(cur.getString(3));
+            listElements[ii]=cur.getString(3);
+            db.setTransactionSuccessful();
+
+
+        } catch (SQLException e) {
+            //salary.setText("nope");
+        } finally {
+            db.endTransaction();
+        }
 
         listView.setAdapter(bullAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -160,7 +134,7 @@ public class BullSelect extends Activity {
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView20)).setText(CarcassWeight);
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView21)).setText(CarcassConform);
 
-                    Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
+                Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
                 btnDismiss.setOnClickListener(new Button.OnClickListener(){
 
                     @Override
@@ -176,20 +150,20 @@ public class BullSelect extends Activity {
                     @Override
                     public void onClick(View v) {
 
-                        Intent in = new Intent(BullSelect.this, BullPicked.class);
+                        Intent in = new Intent(FilterViewBullList.this, Helloworld.class);
 
-                        Bundle bundle = new Bundle();
-                        bundle.putString("1",type);
-                        bundle.putString("2",name);
-                        bundle.putString("3",BullName);
-                        in.putExtras(bundle);
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("1",type);
+//                        bundle.putString("2",name);
+//                        bundle.putString("3",BullName);
+//                        in.putExtras(bundle);
                         startActivity(in);
 
                     }
                 });
-               // popupWindow.showAsDropDown(view, 100, 50);
+                // popupWindow.showAsDropDown(view, 100, 50);
                 popupWindow.showAtLocation(view,80,50,50);
             }}
-            );
+        );
     }
 }

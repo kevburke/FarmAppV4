@@ -44,18 +44,21 @@
 		<EditText
 				android:layout_width="125dp"
 				android:layout_height="wrap_content"
+				android:hint="Enter Jumbo"
 				android:id="@+id/editText2"/>
 	</LinearLayout>
 	<Button
 			android:layout_width="99dp"
 			android:layout_height="wrap_content"
 			android:text="Search"
+			android:onClick="search"
 			android:id="@+id/button"
 			android:layout_gravity="center_horizontal"/>
 
 	<Button android:layout_width="99dp"
 			android:layout_height="wrap_content"
 			android:text="Bull List"
+			android:onClick="bullList"
 			android:id="@+id/button2"
 			android:layout_gravity="center_horizontal"
 			android:layout_weight="0.04"/>

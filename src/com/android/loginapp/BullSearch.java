@@ -23,8 +23,8 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
     private RadioButton radioButton3;
     private RadioButton radioButton4;
     private RadioButton radioButton5;
-    private String Type = "ANY";
-    private String Breed ="ANY";
+    private String Type = "Type";
+    private String Breed ="Breed";
     private String Ratings ="ANY";
     private String RatingsAc ="ANY";
     private String CalvingRating ="ANY";
@@ -253,8 +253,11 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
     }
      public void Refine(View view) {
         logger.log(Level.INFO, "button works!");
-         if(Type=="Type"){
+         if(Type.equals("Type")){
              Toast.makeText(getBaseContext(), "Select Type", Toast.LENGTH_LONG).show();
+         }
+         if(Breed.equals("Breed")){
+             Toast.makeText(getBaseContext(), "Select Breed", Toast.LENGTH_LONG).show();
          }
          else {
 

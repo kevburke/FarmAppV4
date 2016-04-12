@@ -22,8 +22,8 @@ public class ViewBullList extends Activity implements AdapterView.OnItemSelected
     private RadioButton radioButton3;
     private RadioButton radioButton4;
     private RadioButton radioButton5;
-    private String Type = "ANY";
-    private String Breed ="ANY";
+    private String Type = "Type";
+    private String Breed ="Breed";
     private String Ratings ="ANY";
     private String RatingsAc ="ANY";
     private String CalvingRating ="ANY";
@@ -249,6 +249,9 @@ public class ViewBullList extends Activity implements AdapterView.OnItemSelected
         logger.log(Level.INFO, "button works!");
         if(Type=="Type"){
             Toast.makeText(getBaseContext(), "Select Type", Toast.LENGTH_LONG).show();
+        }
+        if(Breed=="Breed"){
+            Toast.makeText(getBaseContext(), "Select Breed", Toast.LENGTH_LONG).show();
         }
         else {
 

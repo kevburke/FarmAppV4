@@ -57,7 +57,6 @@ public class BullSelect extends Activity {
         textView17.setText("Filtered by: " + details[0] + "\n" + details[1] + "\n" + details[2] + "\n" + details[3] + "\n" +
                 details[4]);
 
-
         if(details[0].equals("Terminal")) {
             type = "BullsTerminal";
             name = "TBullName";
@@ -66,56 +65,64 @@ public class BullSelect extends Activity {
             type = "BullsMaternal";
             name = "MBullName";
         }
+
+        String sql ="";
+
+        sql += "SELECT * FROM "+ type+"";
+
+        if(!details[1].equals("ANY"))
+            sql+=" WHERE Tbreed='" + details[1]+"'";
+        if(!details[2].equals("ANY"))
+            sql+=" AND TStarsWithin='"+ details[2]+"'";
+        if(!details[3].equals("ANY"))
+            sql+=" AND TStarsAcross='"+ details[3]+"'";
+        //    if(!details[4].equals("ANY"))
+        //        sql+=" AND TStarsWithin='"+ details[2]+"'";
+        //    if(!details[5].equals("ANY"))
+        //        sql+=" AND TStarsWithin='"+ details[2]+"'";
+
         System.out.println("**************"+details[0]+" "+details[1]+" "+details[2]+" "+details[3]);
         String path = "ICBF";
         db = this.openOrCreateDatabase(path, MODE_PRIVATE, null);
 
-       // bullAdapter.add("adfsghfgjh");
+        // bullAdapter.add("adfsghfgjh");
         System.out.println("at the query *********");
         db.beginTransaction();
         //if (details[0].equals("Terminal")) {                                                         //+" AND "+ "TStarsWithin="+ details[2]
-            try {
-                Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin>='"+ details[2]+"' AND TStarsAcross>='"+ details[3]+"'",null);
-                if(cur !=null) {
-                    cur.moveToFirst();
+        try {
+            //Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin>='"+ details[2]+"' AND TStarsAcross>='"+ details[3]+"'",null);
+            Cursor cur = db.rawQuery(sql,null);
+            // if(cur !=null) {
+            if(cur.moveToFirst()) {
 
-                    int ii = 0;
-                    while (!cur.isLast()) {
-                                if(cur !=null) {
-                                    bullAdapter.add(cur.getString(3));
-                                    listElements[ii++] = cur.getString(3);
-                                    cur.moveToNext();
-                        }
-                        else{
-                            db.setTransactionSuccessful();
-                            Toast.makeText(getApplicationContext(),
-                                    "This selection is not available.",
-                                    Toast.LENGTH_SHORT).show();
-                            Intent in = new Intent(BullSelect.this, BullSearch.class);
-                            startActivity(in);
-                        }
 
-                    }
+                int ii = 0;
+                while (!cur.isLast()) {
+
                     bullAdapter.add(cur.getString(3));
-                    listElements[ii] = cur.getString(3);
+                    listElements[ii++] = cur.getString(3);
+                    cur.moveToNext();
+                }
+                bullAdapter.add(cur.getString(3));
+                listElements[ii] = cur.getString(3);
 
-                    db.setTransactionSuccessful();
-                }else{
-                        db.setTransactionSuccessful();
-                        Toast.makeText(getApplicationContext(),
-                                "This selection is not available.",
-                                Toast.LENGTH_SHORT).show();
-                        Intent in = new Intent(BullSelect.this, BullSearch.class);
-                        startActivity(in);
-                    }
-
-            } catch (SQLException e) {
-                System.out.println("***********In Catch**********");
-
-
-            } finally {
-                db.endTransaction();
+                db.setTransactionSuccessful();
+            }else{
+                db.setTransactionSuccessful();
+                Toast.makeText(getApplicationContext(),
+                        "This selection is not available.",
+                        Toast.LENGTH_SHORT).show();
+                Intent in = new Intent(BullSelect.this, BullSearch.class);
+                startActivity(in);
             }
+
+        } catch (SQLException e) {
+            System.out.println("***********In Catch**********");
+
+
+        } finally {
+            db.endTransaction();
+        }
 
         listView.setAdapter(bullAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -126,7 +133,6 @@ public class BullSelect extends Activity {
                         .getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = layoutInflater.inflate(R.layout.popup, null);
                 db2 = openOrCreateDatabase("ICBF",MODE_PRIVATE, null);
-
 
                 db2.beginTransaction();
                 System.out.println("***************"+position+"***********************");
@@ -154,13 +160,12 @@ public class BullSelect extends Activity {
                         ActionBar.LayoutParams.WRAP_CONTENT,
                         ActionBar.LayoutParams.WRAP_CONTENT);
 
-
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView18)).setText(BullName);
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView19)).setText(StarsWithin);
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView20)).setText(CarcassWeight);
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView21)).setText(CarcassConform);
 
-                    Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
+                Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
                 btnDismiss.setOnClickListener(new Button.OnClickListener(){
 
                     @Override
@@ -184,12 +189,11 @@ public class BullSelect extends Activity {
                         bundle.putString("3",BullName);
                         in.putExtras(bundle);
                         startActivity(in);
-
                     }
                 });
-               // popupWindow.showAsDropDown(view, 100, 50);
+                // popupWindow.showAsDropDown(view, 100, 50);
                 popupWindow.showAtLocation(view,80,50,50);
             }}
-            );
+        );
     }
 }

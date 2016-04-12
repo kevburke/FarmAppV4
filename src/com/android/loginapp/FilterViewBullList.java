@@ -42,12 +42,13 @@ public class FilterViewBullList extends Activity {
 
 
         String [] listElements = new String[80];
-        String[] details = new String[5];
+        String[] details = new String[6];
         details[0] = bundle.getString("1");         //type
         details[1] = bundle.getString("2");         //Breed
         details[2] = bundle.getString("3");         //Ratings
         details[3] = bundle.getString("4");         //ratings across
         details[4] = bundle.getString("5");         //Gestation
+        details[5] = bundle.getString("6");         //code
 
         TextView textView17 = (TextView) findViewById(R.id.textView17);
         ListView listView = (ListView) findViewById(R.id.listView);
@@ -55,6 +56,7 @@ public class FilterViewBullList extends Activity {
                 android.R.layout.simple_list_item_1);
         textView17.setText("Filtered by: " + details[0] + "\n" + details[1] + "\n" + details[2] + "\n" + details[3] + "\n" +
                 details[4]);
+
         if(details[0].equals("Terminal")) {
             type = "BullsTerminal";
             name = "TBullName";
@@ -63,6 +65,23 @@ public class FilterViewBullList extends Activity {
             type = "BullsMaternal";
             name = "MBullName";
         }
+
+        String sql ="";
+
+        sql += "SELECT * FROM "+ type+"";
+
+        if(!details[1].equals("ANY"))
+            sql+=" WHERE Tbreed='" + details[1]+"'";
+        if(!details[2].equals("ANY"))
+            sql+=" AND TStarsWithin='"+ details[2]+"'";
+        if(!details[3].equals("ANY"))
+            sql+=" AND TStarsAcross='"+ details[3]+"'";
+        //    if(!details[4].equals("ANY"))
+        //        sql+=" AND TStarsWithin='"+ details[2]+"'";
+        //    if(!details[5].equals("ANY"))
+        //        sql+=" AND TStarsWithin='"+ details[2]+"'";
+
+
         System.out.println("**************"+details[0]+" "+details[1]+" "+details[2]+" "+details[3]);
         String path = "ICBF";
         db = this.openOrCreateDatabase(path, MODE_PRIVATE, null);
@@ -72,21 +91,36 @@ public class FilterViewBullList extends Activity {
         db.beginTransaction();
         //if (details[0].equals("Terminal")) {                                                         //+" AND "+ "TStarsWithin="+ details[2]
         try {
-            Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin='"+ details[2]+"' AND TStarsAcross='"+ details[3]+"'",null);
-            cur.moveToFirst();
-            int ii=0;
-            while(! cur.isLast()) {
-                bullAdapter.add(cur.getString(3));
-                listElements[ii++]=cur.getString(3);
-                cur.moveToNext();
-            }
-            bullAdapter.add(cur.getString(3));
-            listElements[ii]=cur.getString(3);
-            db.setTransactionSuccessful();
+            //Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin>='"+ details[2]+"' AND TStarsAcross>='"+ details[3]+"'",null);
+            Cursor cur = db.rawQuery(sql,null);
+            // if(cur !=null) {
+            if(cur.moveToFirst()) {
 
+
+                int ii = 0;
+                while (!cur.isLast()) {
+
+                    bullAdapter.add(cur.getString(3));
+                    listElements[ii++] = cur.getString(3);
+                    cur.moveToNext();
+                }
+                bullAdapter.add(cur.getString(3));
+                listElements[ii] = cur.getString(3);
+
+                db.setTransactionSuccessful();
+            }else{
+                db.setTransactionSuccessful();
+                Toast.makeText(getApplicationContext(),
+                        "This selection is not available.",
+                        Toast.LENGTH_SHORT).show();
+                Intent in = new Intent(FilterViewBullList.this, ViewBullList.class);
+                startActivity(in);
+            }
 
         } catch (SQLException e) {
-            //salary.setText("nope");
+            System.out.println("***********In Catch**********");
+
+
         } finally {
             db.endTransaction();
         }
@@ -152,11 +186,11 @@ public class FilterViewBullList extends Activity {
 
                         Intent in = new Intent(FilterViewBullList.this, Helloworld.class);
 
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString("1",type);
-//                        bundle.putString("2",name);
-//                        bundle.putString("3",BullName);
-//                        in.putExtras(bundle);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("1",type);
+                        bundle.putString("2",name);
+                        bundle.putString("3",BullName);
+                        in.putExtras(bundle);
                         startActivity(in);
 
                     }

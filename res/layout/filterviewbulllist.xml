@@ -9,8 +9,10 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Results of Selected Bulls"
-            android:id="@+id/textView15" android:layout_gravity="center_horizontal"
-            android:layout_alignParentTop="true" android:layout_alignLeft="@+id/textView17"
+            android:id="@+id/textView15"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/textView17"
             android:layout_alignStart="@+id/textView17"/>
     <TextView
             android:layout_width="327dp"
@@ -29,5 +31,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/listView"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_below="@+id/textView17"/>
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView17"/>
 </RelativeLayout>

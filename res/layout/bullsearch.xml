@@ -45,7 +45,8 @@
             android:text="Refine"
             android:onClick="Refine"
             android:id="@+id/button5"
-            android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
     <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

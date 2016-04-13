@@ -253,7 +253,6 @@
                 android:layout_height="wrap_content"
                 android:text="Star Rating:"
                 android:id="@+id/textView45"
-                android:layout_alignBottom="@+id/ratingBar5"
                 android:layout_alignRight="@+id/textView46"
                 android:layout_alignEnd="@+id/textView46"/>
         <TextView
@@ -264,45 +263,5 @@
                 android:layout_below="@+id/textView45"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"/>
-        <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ratingBar5"
-                android:layout_below="@+id/textView16"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_alignLeft="@+id/ratingBar4"
-                android:layout_alignStart="@+id/ratingBar4"/>
-        <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ratingBar6"
-                android:layout_below="@+id/ratingBar5"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_alignLeft="@+id/ratingBar5"
-                android:layout_alignStart="@+id/ratingBar5"/>
-        <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Set Date"
-                android:id="@+id/button10"
-                android:onClick="SetDate"
-                android:layout_below="@+id/textView45" android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date:"
-                android:id="@+id/textView48" android:layout_below="@+id/textView46"
-                android:layout_alignLeft="@+id/textView39" android:layout_alignStart="@+id/textView39"
-                android:layout_alignRight="@+id/textView46"
-                android:layout_alignEnd="@+id/textView46"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/textView49"
-                android:layout_below="@+id/ratingBar6"
-                android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </LinearLayout>

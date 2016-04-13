@@ -1,7 +1,6 @@
 package com.android.loginapp;
 
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -21,7 +20,7 @@ import java.util.logging.Logger;
 /**
  * Created by Kev on 06/04/2016.
  */
-public class BullPicked extends Activity implements DateDialog.TheListener {
+public class BullPicked extends Activity  {
     String jumbo;
     String num;
     String sex;
@@ -59,20 +58,21 @@ public class BullPicked extends Activity implements DateDialog.TheListener {
     String daughter_calving_rel;
     String daughter_calv_int;
     String daughter_calv_int_rel;
-    String TRank;
-    String MRank;
+    String Rank;
+   // String MRank;
     String TCode;
     String MCode;
-    String TBullName;
-    String MBullName;
+    String BullName;
+    //String MBullName;
     String TBreed;
     String MBreed;
     String TBullIndex;
     String MBullIndex;
-    String TStarsWithin;
+    String StarsWithin;
     String MStarsWithin;
     String TStarsAcross;
     String MStarsAcross;
+    Double CalfStar;
 
 
 
@@ -87,10 +87,10 @@ public class BullPicked extends Activity implements DateDialog.TheListener {
     TextView textView41;
     TextView textView42;
     TextView textView43;
-    TextView textView49;
+
 
     private static final Logger logger = Logger.getLogger("logger");
-    public TextView textView16;
+
     public static final String MY_PREFS = "SharedPreferences";
     private RatingBar ratingBar2;
     private RatingBar ratingBar3;
@@ -99,7 +99,7 @@ public class BullPicked extends Activity implements DateDialog.TheListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bullpicked);
-        textView16 = (TextView) findViewById(R.id.textView16);
+
         ratingBar2 = (RatingBar) findViewById(R.id.ratingBar2);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String barcode = preferences.getString("Cow", "");
@@ -164,6 +164,7 @@ public class BullPicked extends Activity implements DateDialog.TheListener {
             db.endTransaction();
             System.out.println("Database of cow");
         }
+        System.out.println("*************************"+termStar+"*********************");
         System.out.println("*************************"+jumbo+"*********************");
         System.out.println("*************************"+docileStar+"*********************");
         textView23 = (TextView) findViewById(R.id.textView23);
@@ -205,12 +206,12 @@ public class BullPicked extends Activity implements DateDialog.TheListener {
                 System.out.println("*****************************Arrived*******************************************");
                 cur.moveToFirst();
 
-                TRank = cur.getString(1);
+                Rank = cur.getString(1);
                 TCode = cur.getString(2);
-                TBullName = cur.getString(3);
+                BullName = cur.getString(3);
                 TBreed = cur.getString(4);
                 TBullIndex = cur.getString(5);
-                TStarsWithin = cur.getString(7);
+                StarsWithin = cur.getString(7);
                 TStarsAcross = cur.getString(8);
                 db2.setTransactionSuccessful();
             } catch (SQLException e) {
@@ -221,18 +222,18 @@ public class BullPicked extends Activity implements DateDialog.TheListener {
                 db2.endTransaction();
                 System.out.println("Data base bulls done");
             }
-        }else if(type == "BullsMaternal") {
+        }else if(type.equals("BullsMaternal")) {
             System.out.println("*************************never here**************************************");
             try {
                 Cursor cur = db.rawQuery("SELECT * FROM " + type + " WHERE " + name + "=" + animalName, null);
                 cur.moveToFirst();
 
-                MRank = cur.getString(1);
+                Rank = cur.getString(1);
                 MCode = cur.getString(2);
-                MBullName = cur.getString(3);
+                BullName = cur.getString(3);
                 MBreed = cur.getString(4);
                 MBullIndex = cur.getString(5);
-                MStarsWithin = cur.getString(7);
+                StarsWithin = cur.getString(7);
                 MStarsAcross = cur.getString(8);
                 db2.setTransactionSuccessful();
             } catch (SQLException e) {
@@ -242,30 +243,38 @@ public class BullPicked extends Activity implements DateDialog.TheListener {
             }
         }
 
-        System.out.println(TRank);
+        System.out.println(Rank);
         System.out.println(TCode);
-        System.out.println(TBullName);
+        System.out.println(BullName);
         System.out.println(TBreed);
         textView40 = (TextView) findViewById(R.id.textView40);
         textView41 = (TextView) findViewById(R.id.textView41);
         textView42 = (TextView) findViewById(R.id.textView42);
         textView43 = (TextView) findViewById(R.id.textView43);
-        textView49 = (TextView) findViewById(R.id.textView49);
 
-        textView40.setText(TRank);
+
+        textView40.setText(Rank);
         textView41.setText(TCode);
-        textView42.setText(TBullName);
+        textView42.setText(BullName);
         textView43.setText(TBreed);
 
         double ownStar;
         double awayStar;
-        System.out.println(TStarsWithin);
-        ownStar = Double.parseDouble(TStarsWithin);
+        System.out.println(StarsWithin);
+        ownStar = Double.parseDouble(StarsWithin);
         ratingBar3.setRating((int) ownStar);
         awayStar = Double.parseDouble(TStarsAcross);
         ratingBar4.setRating((int)awayStar);
+        double star;
 
+        //Calf star algorithm
+        if(termStar.equals("")) {
+            star = 0;
+        }
+        else
+            star = Double.parseDouble(termStar);
 
+        CalfStar = (ownStar + star)/2;
 
     }
 
@@ -274,25 +283,23 @@ public class BullPicked extends Activity implements DateDialog.TheListener {
     public void mate(View view) {
         logger.log(Level.INFO, "button works!");
 
-        Intent intent = new Intent(BullPicked.this, DateDialog.class);
+
+
+        Intent intent = new Intent(BullPicked.this, Mating.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("1",Rank);
+        bundle.putString("2",name);
+        bundle.putString("3",BullName);
+        bundle.putDouble("4",CalfStar);
+        intent.putExtras(bundle);
         startActivity(intent);
+
 
         Log.d("BullSearch", "button works!");
     }
 
 
-    public void SetDate(View v) {
-        DialogFragment picker = new DateDialog();
-        picker.show(getFragmentManager(), "datePicker");
 
-
-    }
-    @Override
-    public void returnDate(String date) {
-        // TODO Auto-generated method stub
-        System.out.println("****************************************In function return*************");
-        textView49.setText(date);
-    }
 
 }
 

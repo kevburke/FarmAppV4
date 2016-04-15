@@ -60,19 +60,20 @@ public class BullPicked extends Activity  {
     String daughter_calv_int_rel;
     String Rank;
    // String MRank;
-    String TCode;
-    String MCode;
+    String Code;
+
     String BullName;
     //String MBullName;
-    String TBreed;
+    String Breed;
     String MBreed;
     String TBullIndex;
     String MBullIndex;
     String StarsWithin;
     String MStarsWithin;
-    String TStarsAcross;
+    String StarsAcross;
     String MStarsAcross;
     Double CalfStar;
+    Double CalfAcrossStar;
 
 
 
@@ -179,10 +180,10 @@ public class BullPicked extends Activity  {
         textView27.setText(sex);
         textView29.setText(dam);
         textView34.setText(replaceStar);
-        int repStar;
+        double repStar;
 
-        repStar = Integer.parseInt(replaceStar);
-        ratingBar2.setRating(repStar);
+        repStar = Double.parseDouble(replaceStar);
+        ratingBar2.setRating((float) repStar);
         String name;
         String type;
         String animalName;
@@ -207,12 +208,12 @@ public class BullPicked extends Activity  {
                 cur.moveToFirst();
 
                 Rank = cur.getString(1);
-                TCode = cur.getString(2);
+                Code = cur.getString(2);
                 BullName = cur.getString(3);
-                TBreed = cur.getString(4);
+                Breed = cur.getString(4);
                 TBullIndex = cur.getString(5);
                 StarsWithin = cur.getString(7);
-                TStarsAcross = cur.getString(8);
+                StarsAcross = cur.getString(8);
                 db2.setTransactionSuccessful();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -229,7 +230,7 @@ public class BullPicked extends Activity  {
                 cur.moveToFirst();
 
                 Rank = cur.getString(1);
-                MCode = cur.getString(2);
+                Code = cur.getString(2);
                 BullName = cur.getString(3);
                 MBreed = cur.getString(4);
                 MBullIndex = cur.getString(5);
@@ -244,9 +245,9 @@ public class BullPicked extends Activity  {
         }
 
         System.out.println(Rank);
-        System.out.println(TCode);
+        System.out.println(Code);
         System.out.println(BullName);
-        System.out.println(TBreed);
+        System.out.println(Breed);
         textView40 = (TextView) findViewById(R.id.textView40);
         textView41 = (TextView) findViewById(R.id.textView41);
         textView42 = (TextView) findViewById(R.id.textView42);
@@ -254,16 +255,16 @@ public class BullPicked extends Activity  {
 
 
         textView40.setText(Rank);
-        textView41.setText(TCode);
+        textView41.setText(Code);
         textView42.setText(BullName);
-        textView43.setText(TBreed);
+        textView43.setText(Breed);
 
         double ownStar;
         double awayStar;
         System.out.println(StarsWithin);
-        ownStar = Double.parseDouble(StarsWithin);
+        ownStar = Double.parseDouble(StarsWithin);              //ownStar/StarsWithin equals sire star
         ratingBar3.setRating((int) ownStar);
-        awayStar = Double.parseDouble(TStarsAcross);
+        awayStar = Double.parseDouble(StarsAcross);
         ratingBar4.setRating((int)awayStar);
         double star;
 
@@ -272,9 +273,18 @@ public class BullPicked extends Activity  {
             star = 0;
         }
         else
-            star = Double.parseDouble(termStar);
+            star = Double.parseDouble(termStar);    //star/termStar equals dam tars
 
         CalfStar = (ownStar + star)/2;
+
+        if(replaceStar.equals("")){
+            repStar = 0;
+        }
+        else
+            repStar= Double.parseDouble(replaceStar);
+
+        CalfAcrossStar = (repStar + awayStar)/2;
+
 
     }
 
@@ -284,13 +294,15 @@ public class BullPicked extends Activity  {
         logger.log(Level.INFO, "button works!");
 
 
-
         Intent intent = new Intent(BullPicked.this, Mating.class);
         Bundle bundle = new Bundle();
-        bundle.putString("1",Rank);
-        bundle.putString("2",name);
-        bundle.putString("3",BullName);
-        bundle.putDouble("4",CalfStar);
+        bundle.putString("1",jumbo);        //dam jumbo
+        bundle.putString("2",num);          //dam ID
+        bundle.putString("3",BullName);     //Sire name
+        bundle.putString("4",Code);         //Bull code
+        bundle.putDouble("5",CalfStar);
+        bundle.putDouble("6", CalfAcrossStar);
+
         intent.putExtras(bundle);
         startActivity(intent);
 

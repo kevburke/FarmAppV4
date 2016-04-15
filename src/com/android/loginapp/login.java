@@ -632,9 +632,9 @@ public class login extends Activity {
 			StringBuffer hexString = new StringBuffer();
 			for (int i = 0; i < messageDigest.length; i++)
 				hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
-			Toast.makeText(getApplicationContext(),
-					hexString.toString(),
-					Toast.LENGTH_LONG).show();
+			//Toast.makeText(getApplicationContext(),
+			//		hexString.toString(),
+			//		Toast.LENGTH_LONG).show();
 			return hexString.toString();
 		} catch (NoSuchAlgorithmException e) {
 			return s;

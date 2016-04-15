@@ -131,6 +131,7 @@
         <activity android:name="com.android.loginapp.FilterViewBullList" android:label="filterviewbulllist"/>
         <activity android:name="com.android.loginapp.Mating" android:label="mating"/>
         <activity android:name="com.android.loginapp.Mating" android:label="mating"/>
+        <activity android:name="com.android.loginapp.Finish" android:label="Finish"/>
     </application>
 
 </manifest>

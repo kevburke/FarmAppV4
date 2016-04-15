@@ -82,7 +82,7 @@
                 android:id="@+id/ratingBar7"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_alignTop="@+id/textView57"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true" android:stepSize="0.5"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_alignTop="@+id/textView58"
                 android:layout_alignLeft="@+id/ratingBar7"
-                android:layout_alignStart="@+id/ratingBar7"/>
+                android:layout_alignStart="@+id/ratingBar7" android:stepSize="0.5"/>
         <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
@@ -126,6 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Confirm"
+                android:onClick="Confirm"
                 android:id="@+id/button9"
                 android:layout_alignTop="@+id/button8"
                 android:layout_alignParentRight="true"
@@ -147,5 +148,12 @@
                 android:layout_below="@+id/textView52"
                 android:layout_alignLeft="@+id/textView52"
                 android:layout_alignStart="@+id/textView52"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView49"
+                android:layout_below="@+id/textView52" android:layout_alignLeft="@+id/textView60"
+                android:layout_alignStart="@+id/textView60"/>
     </RelativeLayout>
 </LinearLayout>

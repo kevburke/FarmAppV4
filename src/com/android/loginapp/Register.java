@@ -104,17 +104,14 @@ public class Register extends Activity {
 
 		//Check if all fields have been completed.
 		if (username.equals("") || password.equals("")) {
-			Toast.makeText(getApplicationContext(),
-					"Please ensure all fields have been completed.",
+			Toast.makeText(getApplicationContext(), "Please ensure all fields have been completed.",
 					Toast.LENGTH_SHORT).show();
 			return;
 		}
 
 		//Check password match.
 		if (!password.equals(confirmpassword)) {
-			Toast.makeText(getApplicationContext(),
-					"The password does not match.",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "The password does not match.", Toast.LENGTH_SHORT).show();
 			newPassword.setText("");
 			newConfiPass.setText("");
 			return;
@@ -143,8 +140,7 @@ public class Register extends Activity {
 			user.close();
 			user = dbHelper.fetchUser(username, password);
 			if (user == null) {
-				Toast.makeText(getApplicationContext(), "Database query error",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Database query error", Toast.LENGTH_SHORT).show();
 				return;
 			} else {
 				startManagingCursor(user);
@@ -162,8 +158,7 @@ public class Register extends Activity {
 			//Create the new username.
 			long id = dbHelper.createUser(username, password);
 			if (id > 0) {
-				Toast.makeText(getApplicationContext(), "Your username was created",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Your username was created", Toast.LENGTH_SHORT).show();
 				saveLoggedInUId(id, username, newPassword.getText().toString());
 				Intent i = new Intent(v.getContext(), Helloworld.class);
 				startActivity(i);
@@ -183,8 +178,7 @@ public class Register extends Activity {
 		editor.putString("username", username);
 		editor.putString("password", password);
 		editor.commit();
-		Toast.makeText(getApplicationContext(), "UsrName "+ username + " pass "+ password,
-				Toast.LENGTH_LONG).show();
+		Toast.makeText(getApplicationContext(), "UsrName "+ username + " pass "+ password, Toast.LENGTH_LONG).show();
 	}
 
 	/**

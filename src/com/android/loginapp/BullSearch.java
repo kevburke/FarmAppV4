@@ -264,8 +264,8 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
              Intent intent = new Intent(BullSearch.this, BullSelect.class);
              Bundle bundle = new Bundle();
 
-             bundle.putString("1", Type);
-             bundle.putString("2", Breed);
+             bundle.putString("1", Type);           //terminal/materinal
+             bundle.putString("2", Breed);          //
              bundle.putString("3", Ratings);
              bundle.putString("4", RatingsAc);
              bundle.putString("5", CalvingRating);

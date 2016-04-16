@@ -7,10 +7,17 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.ofix.barcode.R;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 /**
  * Created by Kev on 15/04/2016.
@@ -141,6 +148,53 @@ public class Finish extends Activity {
             Toast.makeText(getBaseContext(), "DataBase insert Done", Toast.LENGTH_LONG).show();
         }
     }
+    public void CommitOnline(View view) {
 
+        JSONObject json = new JSONObject();
+        Log.d("BullSearch", "JSON CREAATED");
+        try{
+            json.put("Tname",Tblname);
+            json.put("jumbo",jumbo);
+            json.put("numID",numID);
+            json.put("BullName",BullName);
+            json.put("Code",Code);
+            json.put("MateDate",MateDate);
+            json.put("Dob",Dob);
+            Log.d("BullSearch", "Configured");
+            //String baseUrl = "http://10.12.11.250:8080/InputOutput";
+            String baseUrl = "http://192.168.1.4:8080/CalfDatabase";
+            new HttpAsyncTask().execute(baseUrl, json.toString());
+
+            Log.d("BullSearch", "sent");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("BullSearch", "button works!");
+
+    }
+    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            String jsonString = "";
+
+            try {
+                jsonString = HttpUtils.urlContentPost(urls[0], "CalfDet", urls[1]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println(jsonString);
+            return jsonString;
+        }//do in background
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            JSONObject jsonResult = null;
+
+            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
+        }//on post execute
+    }//http async task
 
 }

@@ -1,12 +1,15 @@
 package com.android.loginapp;
 
-import android.app.Activity;
-import android.app.DialogFragment;
+import android.app.*;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.ofix.barcode.R;
 
 import java.text.ParseException;
@@ -20,7 +23,7 @@ import java.util.GregorianCalendar;
  */
 public class Mating extends Activity implements DateDialog.TheListener{
 
-
+    private static final int NOTE_ID = 100,NOTE_ID2 =101,NOTE_ID3 =102;
     TextView textView49;
     private RatingBar ratingBar7;
     private RatingBar ratingBar8;
@@ -98,7 +101,12 @@ public class Mating extends Activity implements DateDialog.TheListener{
     public void Confirm(View view) {
 
 
-
+        handler.postDelayed(task, 10000);
+        Toast.makeText(this, "Notification will post in 10 seconds", Toast.LENGTH_SHORT).show();
+        handler2.postDelayed(task2, 15000);
+        Toast.makeText(this, "Notification will post in 15 seconds", Toast.LENGTH_SHORT).show();
+        handler3.postDelayed(task3, 30000);
+        Toast.makeText(this, "Notification will post in 30 seconds", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Mating.this, Finish.class);
             Bundle bundle = new Bundle();
 
@@ -111,4 +119,83 @@ public class Mating extends Activity implements DateDialog.TheListener{
             intent.putExtras(bundle);
             startActivity(intent);
     }
+    private Handler handler = new Handler();
+    private Runnable task = new Runnable() {
+        @Override
+        public void run() {
+            NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+            Intent launchIntent = new Intent(getApplicationContext(), NotificationReturn.class);
+            Bundle bundle = new Bundle();
+
+            bundle.putString("1", jumbo);           //dams jumbo
+
+            PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0, launchIntent, 0);
+            Notification.Builder builder = new Notification.Builder(Mating.this);
+            //Set notification information
+            builder.setSmallIcon(R.drawable.cowicon)
+                    .setTicker("your cow needs attention")
+                    .setWhen(System.currentTimeMillis())
+                    .setAutoCancel(true)
+                    .setDefaults(Notification.DEFAULT_SOUND)
+                    .setContentTitle(jumbo+ " Check cow")
+                    .setContentText("Go to app")
+                    .setContentIntent(contentIntent)
+                    .addExtras(bundle);
+
+            Notification.BigPictureStyle style= new Notification.BigPictureStyle(builder);
+            style.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.cowicon));
+            Notification note = builder.build();
+            manager.notify(NOTE_ID, note);
+        }
+    };
+    private Handler handler2 = new Handler();
+    private Runnable task2 = new Runnable() {
+        @Override
+        public void run() {
+            NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+            Intent launchIntent = new Intent(getApplicationContext(), NotificationReturn.class);
+            PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0, launchIntent, 0);
+            Notification.Builder builder = new Notification.Builder(Mating.this);
+            //Set notification information
+            builder.setSmallIcon(R.drawable.cowicon)
+                    .setTicker("Two")
+                    .setWhen(System.currentTimeMillis())
+                    .setAutoCancel(true)
+                    .setDefaults(Notification.DEFAULT_SOUND)
+                    .setContentTitle(jumbo+ " Check cow again")
+                    .setContentText("Go to app")
+                    .setContentIntent(contentIntent);
+
+            Notification.BigPictureStyle style= new Notification.BigPictureStyle(builder);
+            style.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.cowicon));
+            Notification note = builder.build();
+            manager.notify(NOTE_ID2, note);
+        }
+    };
+    private Handler handler3 = new Handler();
+    private Runnable task3 = new Runnable() {
+        @Override
+        public void run() {
+            NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+            Intent launchIntent = new Intent(getApplicationContext(), NotificationReturn.class);
+
+            PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0, launchIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            Notification.Builder builder = new Notification.Builder(Mating.this);
+            //Set notification information
+            builder.setSmallIcon(R.drawable.cowicon)
+                    .setTicker("Three")
+                    .setWhen(System.currentTimeMillis())
+                    .setAutoCancel(true)
+                    .setDefaults(Notification.DEFAULT_SOUND)
+                    .setContentTitle(jumbo+ " Due date approaching")
+                    .setContentText("Go to app")
+                    .setContentIntent(contentIntent);
+
+            Notification.BigPictureStyle style= new Notification.BigPictureStyle(builder);
+            style.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.cowicon));
+            Notification note = builder.build();
+            manager.notify(NOTE_ID3, note);
+        }
+    };
 }

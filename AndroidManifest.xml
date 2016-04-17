@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-sdk
-            android:minSdkVersion="14"
+            android:minSdkVersion="21"
             android:targetSdkVersion="21"/>
     <application android:icon="@drawable/icon"
                  android:label="@string/app_name2"
@@ -132,6 +132,7 @@
         <activity android:name="com.android.loginapp.Mating" android:label="mating"/>
         <activity android:name="com.android.loginapp.Mating" android:label="mating"/>
         <activity android:name="com.android.loginapp.Finish" android:label="Finish"/>
+        <activity android:name="com.android.loginapp.NotificationReturn" android:label="Notification Return"/>
     </application>
 
 </manifest>

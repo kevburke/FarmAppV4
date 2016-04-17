@@ -1,6 +1,7 @@
 package com.android.loginapp;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,7 +14,7 @@ import com.ofix.barcode.R;
  * Created by Kev on 17/04/2016.
  */
 public class NotificationReturn extends Activity {
-
+    public static final String MY_PREFS = "SharedPreferences";
     SQLiteDatabase db;
     String jumbo;
     String jumbo1;
@@ -29,7 +30,10 @@ public class NotificationReturn extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notificationreturn);
         textView61 = (TextView) findViewById(R.id.textView61);
-              //Dam jumbo
+        SharedPreferences mySharedPreferences = getSharedPreferences(MY_PREFS, 0);
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS, 0);
+        String name = prefs.getString("username", "");
+        Tblname = "Calf"+name ;
         db = this.openOrCreateDatabase("ICBF",MODE_PRIVATE, null);
         db.beginTransaction();
 
@@ -51,6 +55,6 @@ public class NotificationReturn extends Activity {
             db.endTransaction();
             Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
         }
-        textView61.setText(jumbo1=" "+ numID1+" "+BullName1+" "+Code1+" "+MateDate1+" "+Dob1);
+        textView61.setText(jumbo1+" "+ numID1+" "+BullName1+" "+Code1+" "+MateDate1+" "+Dob1);
     }
 }

@@ -88,7 +88,7 @@ public class Finish extends Activity {
             db.endTransaction();
             Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
         }
-        textView48.setText(jumbo1=" "+ numID1+" "+BullName1+" "+Code1+" "+MateDate1+" "+Dob1);
+        textView48.setText(jumbo1+" "+ numID1+" "+BullName1+" "+Code1+" "+MateDate1+" "+Dob1);
     }
     private void addDataBaseTable() {
         System.out.println("inside database function..........");
@@ -161,7 +161,7 @@ public class Finish extends Activity {
             json.put("MateDate",MateDate);
             json.put("Dob",Dob);
             Log.d("BullSearch", "Configured");
-            //String baseUrl = "http://10.12.11.250:8080/InputOutput";
+            //String baseUrl = "http://10.12.11.250:8080/CalfDatabase";
             String baseUrl = "http://192.168.1.4:8080/CalfDatabase";
             new HttpAsyncTask().execute(baseUrl, json.toString());
 

@@ -133,6 +133,7 @@
         <activity android:name="com.android.loginapp.Mating" android:label="mating"/>
         <activity android:name="com.android.loginapp.Finish" android:label="Finish"/>
         <activity android:name="com.android.loginapp.NotificationReturn" android:label="Notification Return"/>
+        <activity android:name="com.android.loginapp.MyHerd" android:label="My Herd"/>
     </application>
 
 </manifest>

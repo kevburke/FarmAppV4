@@ -39,7 +39,7 @@ public class Finish extends Activity {
     String Dob1;
     String Tblname;
     TextView textView46;
-    TextView textView48;
+    //TextView textView48;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,13 +59,13 @@ public class Finish extends Activity {
         Tblname = "Calf"+name ;
         System.out.println(Tblname);
         textView46 = (TextView) findViewById(R.id.textView46);
-        textView48 = (TextView) findViewById(R.id.textView48);
+        //textView48 = (TextView) findViewById(R.id.textView48);
         String path = "ICBF";
         db = this.openOrCreateDatabase(path,MODE_PRIVATE, null);
         SQLiteDatabase db = this.openOrCreateDatabase("ICBF", MODE_PRIVATE, null);
         addDataBaseTable();
         System.out.println(jumbo);
-        textView46.setText(jumbo+" "+ numID+" "+BullName+" "+Code+" "+MateDate+" "+Dob);
+        textView46.setText("Dam Jumbo: "+jumbo+"\nDam Id: "+ numID+"\nSire: "+BullName+"\nSire Id "+Code+"\nMated "+MateDate+"\nDob "+Dob);
         insertData();
         db = this.openOrCreateDatabase(path,MODE_PRIVATE, null);
         db.beginTransaction();
@@ -88,7 +88,7 @@ public class Finish extends Activity {
             db.endTransaction();
             Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
         }
-        textView48.setText(jumbo1+" "+ numID1+" "+BullName1+" "+Code1+" "+MateDate1+" "+Dob1);
+       // textView48.setText(jumbo1+" "+ numID1+" "+BullName1+" "+Code1+" "+MateDate1+" "+Dob1);
     }
     private void addDataBaseTable() {
         System.out.println("inside database function..........");
@@ -161,8 +161,8 @@ public class Finish extends Activity {
             json.put("MateDate",MateDate);
             json.put("Dob",Dob);
             Log.d("BullSearch", "Configured");
-            //String baseUrl = "http://10.12.11.250:8080/CalfDatabase";
-            String baseUrl = "http://192.168.1.4:8080/CalfDatabase";
+            String baseUrl = "http://10.12.11.250:8080/CalfDatabase";
+           // String baseUrl = "http://192.168.1.4:8080/CalfDatabase";
             new HttpAsyncTask().execute(baseUrl, json.toString());
 
             Log.d("BullSearch", "sent");
@@ -196,5 +196,11 @@ public class Finish extends Activity {
             Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
         }//on post execute
     }//http async task
+
+    public void Home(View view){
+        Intent intent = new Intent(Finish.this, Helloworld.class);
+        startActivity(intent);
+
+    }
 
 }

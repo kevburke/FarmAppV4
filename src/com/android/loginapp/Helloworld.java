@@ -3,6 +3,7 @@ package com.android.loginapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -31,12 +32,15 @@ public class Helloworld extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hello);
-
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         textView = (TextView) findViewById(R.id.textView);
 
     }
 
+    /**
+     * Call Camera Application
+     */
 
     public void openCapture() {
         Intent intent = new Intent(this, CaptureActivity.class);
@@ -51,12 +55,8 @@ public class Helloworld extends Activity {
             public void run() {
                 openCapture();
             }
-        }, 2000);
-        /*Intent intent = new Intent(Helloworld.this,MainActivity.class);
-        startActivity(intent);
-        //intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE","");
-       // startActivityForResult(intent, 0);
-        Log.d("test", "button works!");*/
+        }, 500);
+
     }
     public void search(View view){
         mEdit   = (EditText)findViewById(R.id.editText2);
@@ -75,6 +75,11 @@ public class Helloworld extends Activity {
         Intent in = new Intent(Helloworld.this, ViewBullList.class);
         startActivity(in);
 
+    }
+    public void MyHerd(View view) {
+
+        Intent in = new Intent(Helloworld.this, MyHerd.class);
+        startActivity(in);
     }
 
 }

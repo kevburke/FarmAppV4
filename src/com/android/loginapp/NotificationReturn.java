@@ -1,11 +1,13 @@
 package com.android.loginapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.ofix.barcode.R;
@@ -55,6 +57,11 @@ public class NotificationReturn extends Activity {
             db.endTransaction();
             Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
         }
-        textView61.setText(jumbo1+" "+ numID1+" "+BullName1+" "+Code1+" "+MateDate1+" "+Dob1);
+        textView61.setText("DAM Jumbo: "+jumbo1+"\n Dam Id: "+ numID1+" \nSire: "+BullName1+"\n Sire ID: "+Code1+"\nMated: "+MateDate1+"\nDue Date: "+Dob1);
+    }
+    public void Home(View view){
+        Intent intent = new Intent(NotificationReturn.this, Helloworld.class);
+        startActivity(intent);
+
     }
 }

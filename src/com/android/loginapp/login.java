@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -144,6 +145,7 @@ public class login extends Activity {
 		String path = "ICBF";
 		db = this.openOrCreateDatabase(path,MODE_PRIVATE, null);
 		setContentView(R.layout.main);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		initControls();
 	}
 
@@ -200,7 +202,7 @@ public class login extends Activity {
 		boolean thisRemember = prefs.getBoolean("remember", false);
 		if (thisRemember) {
 			theUsername.setText(thisUsername);
-			thePassword.setText(thisPassword);
+			//thePassword.setText(thisPassword);
 			rememberDetails.setChecked(thisRemember);
 		}
 

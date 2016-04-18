@@ -8,40 +8,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView48"
-            android:layout_marginTop="139dp"
-            android:layout_below="@+id/textView46" android:layout_toEndOf="@+id/button11"/>
+            android:text="Commit Online to view later"
+            android:id="@+id/textView62" android:layout_gravity="center_horizontal"/>
+    <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Commit Online"
+            android:onClick="CommitOnline"
+            android:id="@+id/button11"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignEnd="@+id/textView46" android:layout_alignTop="@+id/button13"
+            android:layout_gravity="center_horizontal"/>
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:layout_gravity="center_horizontal">
-        <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Finish"
-                android:onClick="Finish"
-                android:id="@+id/button10"
-                android:layout_alignTop="@+id/button11"
-                android:layout_toRightOf="@+id/button11"
-                android:layout_marginLeft="64dp"
-                android:layout_marginStart="64dp"/>
-        <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Commit Online"
-                android:onClick="CommitOnline"
-                android:id="@+id/button11"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+            android:layout_height="346dp" android:layout_gravity="center_horizontal">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
+                android:text="Large rre"
                 android:id="@+id/textView46"
-                android:layout_alignParentTop="true" android:layout_alignParentStart="true"/>
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"/>
+        <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:onClick="Home"
+                android:id="@+id/button13"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true" android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 </LinearLayout>

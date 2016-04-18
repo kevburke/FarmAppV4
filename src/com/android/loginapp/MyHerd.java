@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,11 +24,22 @@ public class MyHerd extends Activity {
     public static final String MY_PREFS = "SharedPreferences";
     String jumbo;
     String sex;
+    String breed;
+    String dob;
+    String replace;
+    String terminal;
+    String calfDiff;
+    String replaceStar;
+    String termStar;
+    private RatingBar ratingBar5;
+    private RatingBar ratingBar6;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myherd);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
        // String barcode = preferences.getString("Cow", "");
         SharedPreferences prefs = getSharedPreferences(MY_PREFS, 0);
@@ -99,6 +111,13 @@ public class MyHerd extends Activity {
                     cur.moveToFirst();
                     jumbo = cur.getString(1);
                     sex = cur.getString(3);
+                    dob = cur.getString(4);
+                    breed = cur.getString(7);
+                    replace =cur.getString(10);
+                    terminal =cur.getString(12);
+                    calfDiff = cur.getString(15);
+                    replaceStar =cur.getString(18);
+                    termStar = cur.getString(19);
                    // CarcassWeight = cur.getString(15);
                    // CarcassConform = cur.getString(17);
                     db2.setTransactionSuccessful();
@@ -113,16 +132,40 @@ public class MyHerd extends Activity {
                     db2.endTransaction();
                 }
 
+
+
                 final PopupWindow popupWindow = new PopupWindow(
                         popupView,
                         ActionBar.LayoutParams.WRAP_CONTENT,
                         ActionBar.LayoutParams.WRAP_CONTENT);
+                double ownStar;
+                //double awayStar;
+                double star;
+                if(termStar.equals("")) {
+                    star = 0;
+                }
+                else
+                    star = Double.parseDouble(termStar);    //star/termStar equals dam tars
+
+                //System.out.println(StarsWithin);
+                ownStar = Double.parseDouble(replaceStar);              //ownStar/StarsWithin equals sire star
+                //ratingBar5.setRating((int) ownStar);
+                //awayStar = Double.parseDouble(termStar);
+                //ratingBar6.setRating((int)awayStar);
+
+
+
+
 
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView18)).setText(jumbo);
                 ((TextView)popupWindow.getContentView().findViewById(R.id.textView19)).setText(sex);
-                //((TextView)popupWindow.getContentView().findViewById(R.id.textView20)).setText(CarcassWeight);
-                //((TextView)popupWindow.getContentView().findViewById(R.id.textView21)).setText(CarcassConform);
-
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView20)).setText(dob);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView21)).setText(breed);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView69)).setText(replace);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView71)).setText(terminal);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView73)).setText(calfDiff);
+                ((RatingBar)popupWindow.getContentView().findViewById(R.id.ratingBar5)).setRating((float) ownStar);
+                ((RatingBar)popupWindow.getContentView().findViewById(R.id.ratingBar6)).setRating((float) star);
                 Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
                 btnDismiss.setOnClickListener(new Button.OnClickListener(){
 
@@ -144,7 +187,7 @@ public class MyHerd extends Activity {
                     }
                 });
                 // popupWindow.showAsDropDown(view, 100, 50);
-                popupWindow.showAtLocation(view,80,50,50);
+                popupWindow.showAtLocation(view,80,150,180);
             }}
         );
     }

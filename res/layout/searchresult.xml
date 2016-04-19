@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:id="@+id/relp">
 
     <TextView
             android:layout_width="wrap_content"
@@ -11,46 +12,51 @@
             android:text="Small Text"
             android:id="@+id/textView2"
             android:layout_marginLeft="112dp"
-            android:layout_marginStart="112dp"
-            android:layout_marginTop="43dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_below="@+id/textView8" android:layout_alignEnd="@+id/button3"/>
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:textAppearance="?android:attr/textAppearanceSmall"
               android:text="Small Text"
               android:id="@+id/textView4"
-              android:layout_below="@+id/textView2" android:layout_alignLeft="@+id/textView2"
-              android:layout_alignStart="@+id/textView2" android:layout_marginTop="28dp"/>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:textAppearance="?android:attr/textAppearanceSmall" android:text="Small Text"
+              android:layout_below="@+id/textView2"
+              android:layout_alignStart="@+id/textView2"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceSmall"
+              android:text="Small Text"
               android:id="@+id/textView5"
-              android:layout_below="@+id/textView4" android:layout_alignLeft="@+id/textView4"
-              android:layout_alignStart="@+id/textView4" android:layout_marginTop="20dp"/>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:textAppearance="?android:attr/textAppearanceSmall" android:text="Small Text"
+              android:layout_alignTop="@+id/textView11"
+              android:layout_alignStart="@+id/textView4"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceSmall"
+              android:text="Small Text"
               android:id="@+id/textView6"
-              android:layout_below="@+id/textView5" android:layout_alignLeft="@+id/textView5"
-              android:layout_alignStart="@+id/textView5" android:layout_marginTop="20dp"/>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:textAppearance="?android:attr/textAppearanceSmall" android:text="Small Text"
+              android:layout_alignTop="@+id/textView12"
+              android:layout_alignStart="@+id/textView5"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceSmall"
+              android:text="Small Text"
               android:id="@+id/textView7"
-              android:layout_alignTop="@+id/textView14" android:layout_alignStart="@+id/ratingBar"/>
+              android:layout_alignBaseline="@+id/textView75"
+              android:layout_alignBottom="@+id/textView75"
+              android:layout_alignStart="@+id/ratingBar"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Scanned Animal "
             android:id="@+id/textView8"
-            android:layout_alignParentTop="true" android:layout_toEndOf="@+id/textView11"/>
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textView11"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Jumbo  Id:"
             android:id="@+id/textView9"
-            android:layout_above="@+id/textView4" android:layout_alignRight="@+id/textView10"
+            android:layout_alignTop="@+id/textView2"
             android:layout_alignEnd="@+id/textView10"/>
     <RatingBar
             android:layout_width="wrap_content"
@@ -59,49 +65,152 @@
             android:isIndicator="true"
             style="?android:attr/ratingBarStyleSmall"
             android:max="5"
-
-            android:stepSize="1" android:layout_below="@+id/textView6" android:layout_alignLeft="@+id/textView6"
-            android:layout_alignStart="@+id/textView6" android:layout_marginTop="21dp"/>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:textAppearance="?android:attr/textAppearanceSmall" android:text="Animal Id:"
+            android:stepSize="0.5"
+            android:layout_below="@+id/textView91"
+            android:layout_alignStart="@+id/textView91"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceSmall"
+              android:text="Animal Id:"
               android:id="@+id/textView10"
-              android:layout_alignBaseline="@+id/textView4" android:layout_alignBottom="@+id/textView4"
-              android:layout_alignLeft="@+id/textView11" android:layout_alignStart="@+id/textView11"/>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:textAppearance="?android:attr/textAppearanceSmall" android:text="New Text"
+              android:layout_below="@+id/textView9"
+              android:layout_toStartOf="@+id/textView8"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceSmall"
+              android:text="Sex:"
               android:id="@+id/textView11"
-              android:layout_alignTop="@+id/textView5" android:layout_alignRight="@+id/textView13"
-              android:layout_alignEnd="@+id/textView13"/>
+              android:layout_below="@+id/textView10" android:layout_alignEnd="@+id/textView13"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:textAppearance="?android:attr/textAppearanceSmall" android:text="Dam id:"
+              android:textAppearance="?android:attr/textAppearanceSmall" android:text="Dob:"
               android:id="@+id/textView12"
-              android:layout_alignTop="@+id/textView6" android:layout_alignRight="@+id/textView11"
-              android:layout_alignEnd="@+id/textView11"/>
+              android:layout_below="@+id/textView11" android:layout_alignEnd="@+id/textView11"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:textAppearance="?android:attr/textAppearanceSmall" android:text="Replace star:"
+              android:textAppearance="?android:attr/textAppearanceSmall" android:text="Replacement:"
               android:id="@+id/textView13"
-              android:layout_alignTop="@+id/ratingBar" android:layout_alignParentLeft="true"
-              android:layout_alignParentStart="true"/>
+              android:layout_alignTop="@+id/ratingBar" android:layout_alignParentStart="true"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:textAppearance="?android:attr/textAppearanceSmall" android:text="Replace star:"
+              android:textAppearance="?android:attr/textAppearanceSmall" android:text="Terminal:"
               android:id="@+id/textView14"
-              android:layout_centerVertical="true" android:layout_alignRight="@+id/textView12"
-              android:layout_alignEnd="@+id/textView12"/>
+              android:layout_below="@+id/textView13" android:layout_alignEnd="@+id/textView13"/>
     <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="   Select Bull"
             android:id="@+id/button3"
             android:onClick="bullList"
-            android:layout_alignParentBottom="true" android:layout_toEndOf="@+id/textView10"
-            android:layout_marginBottom="42dp"/>
-    <Button
-            style="?android:attr/buttonStyleSmall"
+            android:layout_alignParentBottom="true" android:layout_toEndOf="@+id/textView88"/>
+    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button4"
-            android:layout_alignTop="@+id/button3" android:layout_toRightOf="@+id/ratingBar"
-            android:layout_toEndOf="@+id/ratingBar" android:layout_marginLeft="42dp" android:layout_marginStart="42dp"/>
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=" Replace:          €"
+            android:id="@+id/textView75"
+            android:layout_below="@+id/textView14" android:layout_alignEnd="@+id/textView78"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView77"
+            android:layout_below="@+id/textView7" android:layout_alignStart="@+id/textView7"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=" Terminal:         €"
+            android:id="@+id/textView78"
+            android:layout_alignTop="@+id/textView77" android:layout_alignStart="@+id/textView10"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView79" android:layout_below="@+id/textView77"
+            android:layout_alignStart="@+id/textView77"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Calving Diff:"
+            android:id="@+id/textView80" android:layout_below="@+id/textView78"
+            android:layout_alignEnd="@+id/textView12"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Carcass Index:"
+            android:id="@+id/textView82"
+            android:layout_below="@+id/textView80" android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView83"
+            android:layout_alignTop="@+id/textView82" android:layout_alignStart="@+id/textView79"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Dauhter Milk Rel:"
+            android:id="@+id/textView84"
+            android:layout_below="@+id/textView82" android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView85"
+            android:layout_below="@+id/textView83" android:layout_alignStart="@+id/textView83"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Daughter Calf Diff:"
+            android:id="@+id/textView86"
+            android:layout_below="@+id/textView84" android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView87"
+            android:layout_below="@+id/textView85" android:layout_alignStart="@+id/textView85"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Daugter Int Rel:"
+            android:id="@+id/textView88"
+            android:layout_alignTop="@+id/textView89" android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView89" android:layout_below="@+id/textView87"
+            android:layout_alignStart="@+id/textView87"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Breed:"
+            android:id="@+id/textView90" android:layout_below="@+id/textView12"
+            android:layout_alignEnd="@+id/textView9"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView91" android:layout_below="@+id/textView6"
+            android:layout_alignStart="@+id/textView6"/>
+    <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar9"
+            style="?android:attr/ratingBarStyleSmall"
+            android:stepSize="0.5" android:layout_alignBottom="@+id/textView14"
+            android:layout_alignStart="@+id/textView7"/>
 </RelativeLayout>

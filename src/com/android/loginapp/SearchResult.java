@@ -68,8 +68,18 @@ public class SearchResult extends Activity {
     TextView textView2;
     TextView textView3;
     TextView textView4;
-    TextView textView5;
-    private RatingBar rb_small;
+    TextView textView7;
+    TextView textView6;
+    TextView textView91;
+    TextView textView77;
+    TextView textView79;
+    TextView textView83;
+    TextView textView85;
+    TextView textView87;
+    TextView textView89;
+
+    private RatingBar ratingBar;
+    private RatingBar ratingBar9;
     private static final Logger logger = Logger.getLogger("logger");
 
     public static final String MY_PREFS = "SharedPreferences";
@@ -78,7 +88,8 @@ public class SearchResult extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searchresult);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        rb_small = (RatingBar)findViewById(R.id.ratingBar);
+        ratingBar = (RatingBar)findViewById(R.id.ratingBar);
+        ratingBar9 = (RatingBar)findViewById(R.id.ratingBar9);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String barcode = preferences.getString("Cow", "");
@@ -178,22 +189,52 @@ public class SearchResult extends Activity {
                 daughter_calv_int_rel+"\n"
         );
 
-        textView1 = (TextView) findViewById(R.id.textView2);
-        textView2 = (TextView) findViewById(R.id.textView4);
-        textView3 = (TextView) findViewById(R.id.textView5);
-        textView4 = (TextView) findViewById(R.id.textView6);
-        textView5 = (TextView) findViewById(R.id.textView7);
+        textView1 = (TextView) findViewById(R.id.textView2);//jumbo
+        textView2 = (TextView) findViewById(R.id.textView4);//Animal id
+        textView3 = (TextView) findViewById(R.id.textView5);//sex
+        textView6 = (TextView) findViewById(R.id.textView6);//dob
+        textView91 = (TextView) findViewById(R.id.textView91);//breed
+        textView7 = (TextView) findViewById(R.id.textView7);// replace   €
+        textView77 = (TextView) findViewById(R.id.textView77);// terminal €
+        textView79 = (TextView) findViewById(R.id.textView79); //calf diff
+        textView83 = (TextView) findViewById(R.id.textView83); //carcass Index
+        textView85 = (TextView) findViewById(R.id.textView85); //daughter calf rel
+        textView87 = (TextView) findViewById(R.id.textView87); //daughter calf diff
+        textView89 = (TextView) findViewById(R.id.textView89); //daughter int Rel
+
 
 
         textView1.setText(jumbo);
         textView2.setText(num);
         textView3.setText(sex);
-        textView4.setText(dam);
-        textView5.setText(replaceStar);
-        int repStar;
+        textView6.setText(dob);
+        textView91.setText(breed);
+        textView7.setText(replacement);
+        textView77.setText(terminal);
+        textView79.setText(calving_diff);
+        textView83.setText(carcassWeiIndx);
+        textView83.setText(carcassWeiIndx);
+        textView85.setText(daughter_milk_rel);
+        textView87.setText(daughter_Calving_Diff);
+        textView89.setText(daughter_calv_int_rel);
 
-        repStar = Integer.parseInt(replaceStar);
-        rb_small.setRating(repStar);
+
+
+        double ownStar;
+        ownStar = Double.parseDouble(replaceStar);              //ownStar/StarsWithin equals sire star
+
+
+        ratingBar.setRating((float) ownStar);
+
+
+        double star;
+        if(termStar.equals("")) {
+            star = 0;
+        }
+        else
+            star = Double.parseDouble(termStar);    //star/termStar equals dam tars
+
+        ratingBar9.setRating((float) star);
 
     }
     public void bullList(View view) {

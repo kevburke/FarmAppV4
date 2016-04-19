@@ -3,6 +3,7 @@ package com.android.loginapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -100,6 +101,8 @@ public class BullPicked extends Activity  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bullpicked);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         ratingBar2 = (RatingBar) findViewById(R.id.ratingBar2);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -163,11 +166,11 @@ public class BullPicked extends Activity  {
             //salary.setText("nope");
         } finally {
             db.endTransaction();
-            System.out.println("Database of cow");
+           // System.out.println("Database of cow");
         }
-        System.out.println("*************************"+termStar+"*********************");
-        System.out.println("*************************"+jumbo+"*********************");
-        System.out.println("*************************"+docileStar+"*********************");
+//        System.out.println("*************************"+termStar+"*********************");
+//        System.out.println("*************************"+jumbo+"*********************");
+//        System.out.println("*************************"+docileStar+"*********************");
         textView23 = (TextView) findViewById(R.id.textView23);
         textView25 = (TextView) findViewById(R.id.textView25);
         textView27 = (TextView) findViewById(R.id.textView27);
@@ -244,10 +247,10 @@ public class BullPicked extends Activity  {
             }
         }
 
-        System.out.println(Rank);
-        System.out.println(Code);
-        System.out.println(BullName);
-        System.out.println(Breed);
+//        System.out.println(Rank);
+//        System.out.println(Code);
+//        System.out.println(BullName);
+//        System.out.println(Breed);
         textView40 = (TextView) findViewById(R.id.textView40);
         textView41 = (TextView) findViewById(R.id.textView41);
         textView42 = (TextView) findViewById(R.id.textView42);

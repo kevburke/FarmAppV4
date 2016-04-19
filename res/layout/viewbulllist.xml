@@ -83,13 +83,17 @@
     <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner5" android:layout_below="@+id/spinner4" android:layout_toLeftOf="@+id/radioButton4"
+            android:id="@+id/spinner5"
+            android:layout_below="@+id/spinner4"
+            android:layout_toLeftOf="@+id/radioButton4"
             android:layout_toStartOf="@+id/radioButton4"/>
     <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select"
             android:id="@+id/radioButton5"
-            android:layout_alignBottom="@+id/spinner5" android:layout_toRightOf="@+id/spinner5"
-            android:layout_toEndOf="@+id/spinner5" android:checked="false"/>
+            android:layout_alignBottom="@+id/spinner5"
+            android:layout_toRightOf="@+id/spinner5"
+            android:layout_toEndOf="@+id/spinner5"
+            android:checked="false"/>
 </RelativeLayout>

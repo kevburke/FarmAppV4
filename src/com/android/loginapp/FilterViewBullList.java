@@ -39,7 +39,7 @@ public class FilterViewBullList extends Activity {
     String StarsAcross;
     String Price;
     String Supplier;
-    
+
 
 
 

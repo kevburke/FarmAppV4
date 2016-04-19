@@ -33,6 +33,16 @@ public class FilterViewBullList extends Activity {
     TextView textView21;
     String type;
     String name;
+    String Code;
+    String Breed;
+    String Index;
+    String StarsAcross;
+    String Price;
+    String Supplier;
+    
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,19 +142,24 @@ public class FilterViewBullList extends Activity {
                 LayoutInflater layoutInflater
                         = (LayoutInflater)getBaseContext()
                         .getSystemService(LAYOUT_INFLATER_SERVICE);
-                View popupView = layoutInflater.inflate(R.layout.popup, null);
+                View popupView = layoutInflater.inflate(R.layout.popup2, null);
                 db2 = openOrCreateDatabase("ICBF",MODE_PRIVATE, null);
-
 
                 db2.beginTransaction();
                 System.out.println("***************"+position+"***********************");
                 try{                                     //type=BllsTerminal name=TBullname
                     Cursor cur =  db2.rawQuery("SELECT * FROM "+type+" WHERE "+name+"='" + listElements[position]+"'", null);
                     cur.moveToFirst();
+                    Code = cur.getString(2);
                     BullName = cur.getString(3);
+                    Breed = cur.getString(4);
+                    Index = cur.getString(5);
                     StarsWithin = cur.getString(7);
+                    StarsAcross =cur.getString(8);
                     CarcassWeight = cur.getString(15);
                     CarcassConform = cur.getString(17);
+                    Price = cur.getString(20);
+                    Supplier = cur.getString(21);
                     db2.setTransactionSuccessful();
                     System.out.println("****************Data recieved************************");
                     System.out.println("*******************************"+BullName+"****************");
@@ -157,16 +172,35 @@ public class FilterViewBullList extends Activity {
                     db2.endTransaction();
                 }
 
+                double ownStar;
+                //double awayStar;
+                double star;
+                if(StarsAcross.equals("")) {
+                    star = 0;
+                }
+                else
+                    star = Double.parseDouble(StarsAcross);    //star/termStar equals dam tars
+
+                //System.out.println(StarsWithin);
+                ownStar = Double.parseDouble(StarsWithin);              //ownStar/StarsWithin equals sire star
+                //ratingBar5.setRating((int) ownStar);
+                //awayStar = Double.parseDouble(termStar);
+                //ratingBar6.setRating((int)awayStar);
+
                 final PopupWindow popupWindow = new PopupWindow(
                         popupView,
                         ActionBar.LayoutParams.WRAP_CONTENT,
                         ActionBar.LayoutParams.WRAP_CONTENT);
 
-
-                ((TextView)popupWindow.getContentView().findViewById(R.id.textView18)).setText(BullName);
-                ((TextView)popupWindow.getContentView().findViewById(R.id.textView19)).setText(StarsWithin);
-                ((TextView)popupWindow.getContentView().findViewById(R.id.textView20)).setText(CarcassWeight);
-                ((TextView)popupWindow.getContentView().findViewById(R.id.textView21)).setText(CarcassConform);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView18)).setText(Code);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView19)).setText(BullName);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView20)).setText(Breed);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView21)).setText(Index);
+                ((RatingBar)popupWindow.getContentView().findViewById(R.id.ratingBar7)).setRating((float)ownStar);
+                ((RatingBar)popupWindow.getContentView().findViewById(R.id.ratingBar8)).setRating((float) star);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView73)).setText(CarcassWeight);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView71)).setText(Price);
+                ((TextView)popupWindow.getContentView().findViewById(R.id.textView69)).setText(Supplier);
 
                 Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
                 btnDismiss.setOnClickListener(new Button.OnClickListener(){
@@ -192,7 +226,6 @@ public class FilterViewBullList extends Activity {
                         bundle.putString("3",BullName);
                         in.putExtras(bundle);
                         startActivity(in);
-
                     }
                 });
                 // popupWindow.showAsDropDown(view, 100, 50);
@@ -201,3 +234,7 @@ public class FilterViewBullList extends Activity {
         );
     }
 }
+
+
+
+

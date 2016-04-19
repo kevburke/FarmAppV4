@@ -88,7 +88,7 @@
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_below="@+id/textView29"
                 android:layout_alignLeft="@+id/textView29"
-                android:layout_alignStart="@+id/textView29"/>
+                android:layout_alignStart="@+id/textView29" android:stepSize="0.5"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -207,14 +207,14 @@
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_above="@+id/ratingBar4"
                 android:layout_alignLeft="@+id/ratingBar4"
-                android:layout_alignStart="@+id/ratingBar4"/>
+                android:layout_alignStart="@+id/ratingBar4" android:stepSize="0.5"/>
         <RatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ratingBar4"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_alignTop="@+id/textView44"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true" android:stepSize="0.5"/>
         <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"

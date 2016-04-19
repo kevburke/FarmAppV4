@@ -67,7 +67,7 @@ public class BullPicked extends Activity  {
     //String MBullName;
     String Breed;
     String MBreed;
-    String TBullIndex;
+    String BullIndex;
     String MBullIndex;
     String StarsWithin;
     String MStarsWithin;
@@ -214,7 +214,7 @@ public class BullPicked extends Activity  {
                 Code = cur.getString(2);
                 BullName = cur.getString(3);
                 Breed = cur.getString(4);
-                TBullIndex = cur.getString(5);
+                BullIndex = cur.getString(5);
                 StarsWithin = cur.getString(7);
                 StarsAcross = cur.getString(8);
                 db2.setTransactionSuccessful();
@@ -235,10 +235,10 @@ public class BullPicked extends Activity  {
                 Rank = cur.getString(1);
                 Code = cur.getString(2);
                 BullName = cur.getString(3);
-                MBreed = cur.getString(4);
-                MBullIndex = cur.getString(5);
+                Breed = cur.getString(4);
+                BullIndex = cur.getString(5);
                 StarsWithin = cur.getString(7);
-                MStarsAcross = cur.getString(8);
+                StarsAcross = cur.getString(8);
                 db2.setTransactionSuccessful();
             } catch (SQLException e) {
                 //salary.setText("nope");
@@ -247,10 +247,10 @@ public class BullPicked extends Activity  {
             }
         }
 
-//        System.out.println(Rank);
-//        System.out.println(Code);
-//        System.out.println(BullName);
-//        System.out.println(Breed);
+        System.out.println(Rank);
+        System.out.println(Code);
+        System.out.println(BullName);
+        System.out.println(Breed);
         textView40 = (TextView) findViewById(R.id.textView40);
         textView41 = (TextView) findViewById(R.id.textView41);
         textView42 = (TextView) findViewById(R.id.textView42);

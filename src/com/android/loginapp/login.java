@@ -134,6 +134,8 @@ public class login extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Intent intent = new Intent(login.this, Splash.class);
+		startActivity(intent);
 
 		SharedPreferences mySharedPreferences = getSharedPreferences(MY_PREFS, 0);
 		Editor editor = mySharedPreferences.edit();

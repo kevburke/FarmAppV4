@@ -29,8 +29,8 @@ public class FilterViewBullList extends Activity {
     String CarcassConform;
     TextView textView18;
     TextView textView19;
-    TextView textView20;
-    TextView textView21;
+    TextView textView92;
+    TextView textView94;
     String type;
     String name;
     String Code;
@@ -51,13 +51,13 @@ public class FilterViewBullList extends Activity {
         Bundle bundle = intent.getExtras();
 
 
-        String [] listElements = new String[80];
+        String[] listElements = new String[80];
         String[] details = new String[6];
         details[0] = bundle.getString("1");         //type
         details[1] = bundle.getString("2");         //Breed
         details[2] = bundle.getString("3");         //Ratings
         details[3] = bundle.getString("4");         //ratings across
-        details[4] = bundle.getString("5");         //Gestation
+        details[4] = bundle.getString("5");         //Supplier
         details[5] = bundle.getString("6");         //code
 
         TextView textView17 = (TextView) findViewById(R.id.textView17);
@@ -76,65 +76,188 @@ public class FilterViewBullList extends Activity {
             name = "MBullName";
         }
 
-        String sql ="";
-
-        sql += "SELECT * FROM "+ type+"";
-
-        if(!details[1].equals("ANY"))
-            sql+=" WHERE Tbreed='" + details[1]+"'";
-        if(!details[2].equals("ANY"))
-            sql+=" AND TStarsWithin='"+ details[2]+"'";
-        if(!details[3].equals("ANY"))
-            sql+=" AND TStarsAcross='"+ details[3]+"'";
-        //    if(!details[4].equals("ANY"))
-        //        sql+=" AND TStarsWithin='"+ details[2]+"'";
-        //    if(!details[5].equals("ANY"))
-        //        sql+=" AND TStarsWithin='"+ details[2]+"'";
-
-
-        System.out.println("**************"+details[0]+" "+details[1]+" "+details[2]+" "+details[3]);
+        System.out.println("**************" + details[0] + " " + details[1] + " " + details[2] + " " + details[3]);
         String path = "ICBF";
         db = this.openOrCreateDatabase(path, MODE_PRIVATE, null);
 
         // bullAdapter.add("adfsghfgjh");
         System.out.println("at the query *********");
         db.beginTransaction();
-        //if (details[0].equals("Terminal")) {                                                         //+" AND "+ "TStarsWithin="+ details[2]
-        try {
-            //Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin>='"+ details[2]+"' AND TStarsAcross>='"+ details[3]+"'",null);
-            Cursor cur = db.rawQuery(sql,null);
-            // if(cur !=null) {
-            if(cur.moveToFirst()) {
+        if (type.equals("BullsTerminal")) {                                                         //+" AND "+ "TStarsWithin="+ details[2]
+            try {
+                String sql = "";
+                sql += "SELECT * FROM " + type + "";
+                if (!details[1].equals("ANY"))
+                    sql += " WHERE Tbreed='" + details[1] + "'";
+                if (!details[2].equals("ANY"))
+                    sql += " AND TStarsWithin='" + details[2] + "'";
+                if (!details[3].equals("ANY"))
+                    sql += " AND TStarsAcross='" + details[3] + "'";
+                //    if(!details[4].equals("ANY"))
+                //        sql+=" AND TStarsWithin='"+ details[2]+"'";
+                if (!details[4].equals("ANY"))
+                    sql += " AND TSupplier='" + details[4] + "'";
+
+                //Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin>='"+ details[2]+"' AND TStarsAcross>='"+ details[3]+"'",null);
+                Cursor cur = db.rawQuery(sql, null);
+                // if(cur !=null) {
+                if (cur.moveToFirst()) {
 
 
-                int ii = 0;
-                while (!cur.isLast()) {
+                    int ii = 0;
+                    while (!cur.isLast()) {
 
+                        bullAdapter.add(cur.getString(3));
+                        listElements[ii++] = cur.getString(3);
+                        cur.moveToNext();
+                    }
                     bullAdapter.add(cur.getString(3));
-                    listElements[ii++] = cur.getString(3);
-                    cur.moveToNext();
+                    listElements[ii] = cur.getString(3);
+
+                    db.setTransactionSuccessful();
+                } else {
+                    db.setTransactionSuccessful();
+                    Toast.makeText(getApplicationContext(),
+                            "This selection is not available.",
+                            Toast.LENGTH_SHORT).show();
+                    Intent in = new Intent(FilterViewBullList.this, ViewBullList.class);
+                    startActivity(in);
                 }
-                bullAdapter.add(cur.getString(3));
-                listElements[ii] = cur.getString(3);
 
-                db.setTransactionSuccessful();
-            }else{
-                db.setTransactionSuccessful();
-                Toast.makeText(getApplicationContext(),
-                        "This selection is not available.",
-                        Toast.LENGTH_SHORT).show();
-                Intent in = new Intent(FilterViewBullList.this, ViewBullList.class);
-                startActivity(in);
+            } catch (SQLException e) {
+                System.out.println("***********In Catch**********");
+
+
+            } finally {
+                db.endTransaction();
             }
+        }
+        else if (type.equals("BullsMaternal"))
+        {
+            try {
+                String sql = "";
+                sql += "SELECT * FROM " + type + "";
+                if (!details[1].equals("ANY"))
+                    sql += " WHERE Mbreed='" + details[1] + "'";
+                if (!details[2].equals("ANY"))
+                    sql += " AND MStarsWithin='" + details[2] + "'";
+                if (!details[3].equals("ANY"))
+                    sql += " AND MStarsAcross='" + details[3] + "'";
+                //    if(!details[4].equals("ANY"))
+                //        sql+=" AND TStarsWithin='"+ details[2]+"'";
+                if (!details[4].equals("ANY"))
+                    sql += " AND MSupplier='" + details[4] + "'";
 
-        } catch (SQLException e) {
-            System.out.println("***********In Catch**********");
+                //Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin>='"+ details[2]+"' AND TStarsAcross>='"+ details[3]+"'",null);
+                Cursor cur = db.rawQuery(sql, null);
+                // if(cur !=null) {
+                if (cur.moveToFirst()) {
 
 
-        } finally {
-            db.endTransaction();
+                    int ii = 0;
+                    while (!cur.isLast()) {
+
+                        bullAdapter.add(cur.getString(3));
+                        listElements[ii++] = cur.getString(3);
+                        cur.moveToNext();
+                    }
+                    bullAdapter.add(cur.getString(3));
+                    listElements[ii] = cur.getString(3);
+
+                    db.setTransactionSuccessful();
+                } else {
+                    db.setTransactionSuccessful();
+                    Toast.makeText(getApplicationContext(),
+                            "This selection is not available.",
+                            Toast.LENGTH_SHORT).show();
+                    Intent in = new Intent(FilterViewBullList.this, ViewBullList.class);
+                    startActivity(in);
+                }
+
+            } catch (SQLException e) {
+                System.out.println("***********In Catch**********");
+
+
+            } finally {
+                db.endTransaction();
+            }
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        String sql ="";
+//
+//        sql += "SELECT * FROM "+ type+"";
+//
+//        if(!details[1].equals("ANY"))
+//            sql+=" WHERE Tbreed='" + details[1]+"'";
+//        if(!details[2].equals("ANY"))
+//            sql+=" AND TStarsWithin='"+ details[2]+"'";
+//        if(!details[3].equals("ANY"))
+//            sql+=" AND TStarsAcross='"+ details[3]+"'";
+//        //    if(!details[4].equals("ANY"))
+//        //        sql+=" AND TStarsWithin='"+ details[2]+"'";
+//        //    if(!details[5].equals("ANY"))
+//        //        sql+=" AND TStarsWithin='"+ details[2]+"'";
+//
+//
+//        System.out.println("**************"+details[0]+" "+details[1]+" "+details[2]+" "+details[3]);
+//        String path = "ICBF";
+//        db = this.openOrCreateDatabase(path, MODE_PRIVATE, null);
+//
+//        // bullAdapter.add("adfsghfgjh");
+//        System.out.println("at the query *********");
+//        db.beginTransaction();
+//        //if (details[0].equals("Terminal")) {                                                         //+" AND "+ "TStarsWithin="+ details[2]
+//        try {
+//            //Cursor cur = db.rawQuery("SELECT * FROM "+ type +" WHERE Tbreed='" + details[1]+"' AND TStarsWithin>='"+ details[2]+"' AND TStarsAcross>='"+ details[3]+"'",null);
+//            Cursor cur = db.rawQuery(sql,null);
+//            // if(cur !=null) {
+//            if(cur.moveToFirst()) {
+//
+//
+//                int ii = 0;
+//                while (!cur.isLast()) {
+//
+//                    bullAdapter.add(cur.getString(3));
+//                    listElements[ii++] = cur.getString(3);
+//                    cur.moveToNext();
+//                }
+//                bullAdapter.add(cur.getString(3));
+//                listElements[ii] = cur.getString(3);
+//
+//                db.setTransactionSuccessful();
+//            }else{
+//                db.setTransactionSuccessful();
+//                Toast.makeText(getApplicationContext(),
+//                        "This selection is not available.",
+//                        Toast.LENGTH_SHORT).show();
+//                Intent in = new Intent(FilterViewBullList.this, ViewBullList.class);
+//                startActivity(in);
+//            }
+//
+//        } catch (SQLException e) {
+//            System.out.println("***********In Catch**********");
+//
+//
+//        } finally {
+//            db.endTransaction();
+//        }
+//
         listView.setAdapter(bullAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

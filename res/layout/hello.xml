@@ -5,87 +5,113 @@
 		android:layout_height="fill_parent"
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:weightSum="1"
+		android:background="@drawable/splash2"
 		android:id="@+id/lay1">
+	<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="26dp" android:layout_gravity="center_horizontal">
+	</LinearLayout>
 	<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="fill_parent"
-			android:layout_height="82dp"
+			android:layout_height="138dp"
 			android:id="@+id/lay"
 			android:weightSum="1">
 		<TextView android:layout_width="wrap_content"
 				  android:layout_height="37dp"
 				  android:textAppearance="?android:attr/textAppearanceLarge"
 				  android:text="Read Ear Tag             "
+				  android:textStyle="bold"
 				  android:id="@+id/textView3"
-				  android:layout_weight="0.09"/>
+				  android:layout_weight="0.41"/>
 		<Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scan"
-                android:onClick="scanNow"
-                android:id="@+id/scanButn"
-                android:layout_weight="0.67"/>
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Scan"
+				android:textStyle="bold"
+				android:onClick="scanNow"
+				android:id="@+id/scanButn"
+				android:layout_weight="0.67" android:backgroundTint="#eeeeee"/>
 	</LinearLayout>
 	<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
-			android:layout_height="67dp"
-			android:layout_gravity="center_horizontal"
+			android:layout_height="96dp"
 			android:weightSum="1"
 			android:id="@+id/lay2">
 		<TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="41dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Enter ID"
+				android:textStyle="bold"
                 android:id="@+id/textView"
 		/>
 		<EditText
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:hint="Enter Jumbo"
-				android:id="@+id/editText2"/>
+				android:textStyle="bold"
+				android:id="@+id/editText2" android:layout_weight="0.91" android:backgroundTint="#eeeeee"/>
 		<Button
-                android:layout_width="wrap_content"
+                android:layout_width="95dp"
                 android:layout_height="wrap_content"
                 android:text="Search"
+				android:textStyle="bold"
                 android:onClick="search"
                 android:id="@+id/button"
-				android:layout_weight="0.63"/>
+				android:backgroundTint="#eeeeee"/>
 	</LinearLayout>
 
 	<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content" android:weightSum="1" android:layout_weight="0.07">
-		<TextView
-				android:layout_width="204dp"
-				android:layout_height="wrap_content"
-				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:text="View Active Bulls          "
-				android:id="@+id/textView48"/>
-		<Button android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Bull List"
-				android:onClick="bullList"
-				android:id="@+id/button2"
-				android:layout_weight="0.50"/>
 	</LinearLayout>
 	<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content" android:layout_weight="0.21">
+	</LinearLayout>
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="479dp" android:id="@+id/rty">
 		<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:textAppearance="?android:attr/textAppearanceLarge"
 				android:text="View Herd                    "
-				android:id="@+id/textView63"/>
+				android:textStyle="bold"
+				android:id="@+id/textView63"
+				android:layout_marginTop="152dp"
+				android:layout_alignParentTop="true" android:layout_alignParentStart="true"/>
 		<Button
-				android:layout_width="100dp"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="My Herd"
+				android:textStyle="bold"
 				android:onClick="MyHerd"
-				android:id="@+id/button10"/>
-	</LinearLayout>
+				android:id="@+id/button10" android:layout_gravity="right"
+				android:layout_alignBottom="@+id/textView63" android:layout_alignParentEnd="true"
+				android:visibility="visible" android:backgroundTint="#eeeeee"/>
+		<TextView
+				android:layout_width="204dp"
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:text="View Active Bulls          "
+				android:textStyle="bold"
+				android:id="@+id/textView48"
+				android:layout_alignParentTop="true" android:layout_alignEnd="@+id/textView63"
+				android:layout_marginTop="46dp"/>
+		<Button android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Bull List"
+				android:textStyle="bold"
+				android:onClick="bullList"
+				android:id="@+id/button2"
+				android:layout_weight="0.50"
+				android:layout_alignBottom="@+id/textView48" android:layout_alignParentEnd="true"
+				android:backgroundTint="#eeeeee" android:layout_alignStart="@+id/button10"/>
+	</RelativeLayout>
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.android.loginapp;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -43,13 +44,15 @@ public class BullSelect extends Activity {
     private RatingBar ratingBar7;
     private RatingBar ratingBar8;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bullsel);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         String[] listElements = new String[80];
         String[] details = new String[6];
@@ -64,7 +67,7 @@ public class BullSelect extends Activity {
         ListView listView = (ListView) findViewById(R.id.listView);
         ArrayAdapter bullAdapter = new ArrayAdapter(this,
                 android.R.layout.simple_list_item_1);
-        textView17.setText("Filtered by: " + details[0] + "\n" + details[1] + "\n" + details[2] + "\n" + details[3] + "\n" +
+        textView17.setText("Filtered by: \n" +"Type: "+ details[0] + "\nBreed: " + details[1] + "\nStars: " + details[2] + "\nStars: " + details[3] + "\nSupplier: " +
                 details[4]);
 
         if (details[0].equals("Terminal")) {
@@ -80,7 +83,7 @@ public class BullSelect extends Activity {
         String path = "ICBF";
         db = this.openOrCreateDatabase(path, MODE_PRIVATE, null);
 
-        // bullAdapter.add("adfsghfgjh");
+
         System.out.println("at the query *********");
         db.beginTransaction();
         if (type.equals("BullsTerminal")) {                                                         //+" AND "+ "TStarsWithin="+ details[2]

@@ -12,10 +12,11 @@
     <uses-sdk
             android:minSdkVersion="21"
             android:targetSdkVersion="21"/>
-    <application android:icon="@drawable/icon"
+    <application android:icon="@drawable/cowicon"
                  android:label="@string/app_name2"
                  android:allowBackup="true"
                  android:theme="@style/AppTheme">
+
         <activity android:name="com.android.loginapp.login"
                   android:label="Farm Buddy">
             <intent-filter>
@@ -134,6 +135,7 @@
         <activity android:name="com.android.loginapp.Finish" android:label="Finish"/>
         <activity android:name="com.android.loginapp.NotificationReturn" android:label="Notification Return"/>
         <activity android:name="com.android.loginapp.MyHerd" android:label="My Herd"/>
+        <activity android:name="com.android.loginapp.Splash" android:label="Farm Buddy"/>
     </application>
 
 </manifest>

@@ -60,23 +60,15 @@ public class BullPicked extends Activity  {
     String daughter_calv_int;
     String daughter_calv_int_rel;
     String Rank;
-   // String MRank;
     String Code;
-
     String BullName;
-    //String MBullName;
     String Breed;
-    String MBreed;
     String BullIndex;
-    String MBullIndex;
     String StarsWithin;
-    String MStarsWithin;
     String StarsAcross;
-    String MStarsAcross;
     Double CalfStar;
     Double CalfAcrossStar;
-
-
+    String Gest;
 
     SQLiteDatabase db;
     SQLiteDatabase db2;
@@ -89,6 +81,10 @@ public class BullPicked extends Activity  {
     TextView textView41;
     TextView textView42;
     TextView textView43;
+    TextView textView92;
+    TextView textView94;
+    TextView textView96;
+    TextView textView98;
 
 
     private static final Logger logger = Logger.getLogger("logger");
@@ -97,6 +93,8 @@ public class BullPicked extends Activity  {
     private RatingBar ratingBar2;
     private RatingBar ratingBar3;
     private RatingBar ratingBar4;
+    private RatingBar ratingBar11;
+    String type;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +103,7 @@ public class BullPicked extends Activity  {
 
 
         ratingBar2 = (RatingBar) findViewById(R.id.ratingBar2);
+        ratingBar11 = (RatingBar) findViewById(R.id.ratingBar11);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String barcode = preferences.getString("Cow", "");
         SharedPreferences prefs = getSharedPreferences(MY_PREFS, 0);
@@ -114,8 +113,6 @@ public class BullPicked extends Activity  {
         ratingBar4 = (RatingBar)findViewById(R.id.ratingBar4);
         String path = "ICBF";
         db = this.openOrCreateDatabase(path, MODE_PRIVATE, null);
-
-        //SQLiteDatabase db = this.openOrCreateDatabase("ICBF", MODE_PRIVATE, null);
 
         db.beginTransaction();
 
@@ -168,14 +165,16 @@ public class BullPicked extends Activity  {
             db.endTransaction();
            // System.out.println("Database of cow");
         }
-//        System.out.println("*************************"+termStar+"*********************");
-//        System.out.println("*************************"+jumbo+"*********************");
-//        System.out.println("*************************"+docileStar+"*********************");
+
         textView23 = (TextView) findViewById(R.id.textView23);
         textView25 = (TextView) findViewById(R.id.textView25);
         textView27 = (TextView) findViewById(R.id.textView27);
         textView29 = (TextView) findViewById(R.id.textView29);
         textView34 = (TextView) findViewById(R.id.textView34);
+        textView92 = (TextView) findViewById(R.id.textView92);
+        textView94 = (TextView) findViewById(R.id.textView94);
+        textView96 = (TextView) findViewById(R.id.textView96);
+        textView98 = (TextView) findViewById(R.id.textView98);
 
 
         textView23.setText(jumbo);
@@ -183,12 +182,23 @@ public class BullPicked extends Activity  {
         textView27.setText(sex);
         textView29.setText(dam);
         textView34.setText(replaceStar);
+        textView92.setText(replacement);
+        textView94.setText(terminal);
+
+
         double repStar;
 
         repStar = Double.parseDouble(replaceStar);
         ratingBar2.setRating((float) repStar);
+        double conStar;
+        if(carcassConformStar.equals("")){
+            conStar =0;
+        }
+        else
+            conStar= Double.parseDouble(carcassConformStar);
+        ratingBar11.setRating((float) conStar);
         String name;
-        String type;
+
         String animalName;
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -201,7 +211,7 @@ public class BullPicked extends Activity  {
         System.out.println(animalName);
 
         db2 = openOrCreateDatabase(path, MODE_PRIVATE, null);
-        //SQLiteDatabase db2 = this.openOrCreateDatabase("ICBF", MODE_PRIVATE, null);
+
         db2.beginTransaction();
         if (type.equals("BullsTerminal")){
             try {
@@ -217,6 +227,7 @@ public class BullPicked extends Activity  {
                 BullIndex = cur.getString(5);
                 StarsWithin = cur.getString(7);
                 StarsAcross = cur.getString(8);
+                Gest =cur.getString(11);
                 db2.setTransactionSuccessful();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -227,9 +238,9 @@ public class BullPicked extends Activity  {
                 System.out.println("Data base bulls done");
             }
         }else if(type.equals("BullsMaternal")) {
-            System.out.println("*************************never here**************************************");
             try {
-                Cursor cur = db.rawQuery("SELECT * FROM " + type + " WHERE " + name + "=" + animalName, null);
+                Cursor cur = db2.rawQuery("SELECT * FROM " + type + " WHERE " + name + "='" + animalName+"'", null);
+
                 cur.moveToFirst();
 
                 Rank = cur.getString(1);
@@ -239,9 +250,10 @@ public class BullPicked extends Activity  {
                 BullIndex = cur.getString(5);
                 StarsWithin = cur.getString(7);
                 StarsAcross = cur.getString(8);
+                Gest =cur.getString(11);
                 db2.setTransactionSuccessful();
             } catch (SQLException e) {
-                //salary.setText("nope");
+
             } finally {
                 db2.endTransaction();
             }
@@ -255,12 +267,12 @@ public class BullPicked extends Activity  {
         textView41 = (TextView) findViewById(R.id.textView41);
         textView42 = (TextView) findViewById(R.id.textView42);
         textView43 = (TextView) findViewById(R.id.textView43);
-
-
         textView40.setText(Rank);
         textView41.setText(Code);
         textView42.setText(BullName);
         textView43.setText(Breed);
+        textView96.setText(BullIndex);
+        textView98.setText(Gest);
 
         double ownStar;
         double awayStar;
@@ -288,14 +300,11 @@ public class BullPicked extends Activity  {
 
         CalfAcrossStar = (repStar + awayStar)/2;
 
-
     }
-
 
 
     public void mate(View view) {
         logger.log(Level.INFO, "button works!");
-
 
         Intent intent = new Intent(BullPicked.this, Mating.class);
         Bundle bundle = new Bundle();
@@ -304,18 +313,21 @@ public class BullPicked extends Activity  {
         bundle.putString("3",BullName);     //Sire name
         bundle.putString("4",Code);         //Bull code
         bundle.putDouble("5",CalfStar);
-        bundle.putDouble("6", CalfAcrossStar);
+        bundle.putDouble("6",CalfAcrossStar);
+        bundle.putString("7",BullIndex);
+        bundle.putString("8",replacement);
+        bundle.putString("9",type);
+        bundle.putString("10",terminal);
 
         intent.putExtras(bundle);
         startActivity(intent);
 
-
         Log.d("BullSearch", "button works!");
     }
-
-
-
-
+    public void back(View view) {
+        logger.log(Level.INFO, "button works!");
+        finish();
+    }
 }
 
 

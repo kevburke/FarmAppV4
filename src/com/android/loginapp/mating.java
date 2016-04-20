@@ -3,10 +3,12 @@ package com.android.loginapp;
 import android.app.*;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,10 @@ public class Mating extends Activity implements DateDialog.TheListener{
     private RatingBar ratingBar7;
     private RatingBar ratingBar8;
     TextView textView52;
+    TextView textView54;
+    TextView textView56;
+    TextView textView99;
+    TextView textView101;
     long epoch;
     String str;
     String numID;
@@ -35,30 +41,75 @@ public class Mating extends Activity implements DateDialog.TheListener{
     String BullName;
     String Code;
     String datein;
+    Button Confirm;
+    String BullIndex;
+    String  replacement;
+    String terminal;
+    String type;
+    double calfRep=0;
+    String calfRep2;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mating);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-
+        Confirm = (Button) findViewById(R.id.Confirm);
         ratingBar7 = (RatingBar) findViewById(R.id.ratingBar7);
         ratingBar8 = (RatingBar) findViewById(R.id.ratingBar8);
         double CalfStar;
         double  CalfAcrossStar;
-        jumbo = bundle.getString("1");         //Dam jumbo
-        numID = bundle.getString("2");         //dam ID
+        jumbo = bundle.getString("1");          //Dam jumbo
+        numID = bundle.getString("2");          //dam ID
         BullName = bundle.getString("3");       //Bullname
         Code = bundle.getString("4");           //Bulls Jumbo
         CalfStar = bundle.getDouble("5");       //Calf star rating calculeated previously
         CalfAcrossStar =bundle.getDouble("6");  //Calf star rating as a across calculated previously
+        BullIndex = bundle.getString("7");
+        replacement =bundle.getString("8");
+        type = bundle.getString("9");
+        terminal = bundle.getString("10");
 
-
+        Confirm.setEnabled(false);
 
         ratingBar7.setRating((int) CalfStar);
         ratingBar8.setRating((float) CalfAcrossStar);
         textView49 = (TextView) findViewById(R.id.textView49);
         textView52 = (TextView) findViewById(R.id.textView52);
+        textView54 = (TextView) findViewById(R.id.textView54);
+        textView56 = (TextView) findViewById(R.id.textView56);
+        textView99 = (TextView) findViewById(R.id.textView99);
+        textView101 = (TextView) findViewById(R.id.textView101);
+        textView54.setText(jumbo);
+        textView56.setText(BullName);
+
+        if(type.equals("BullsMaternal")){
+            double rep;
+            double ind;
+
+            rep = Double.parseDouble(replacement);
+            ind = Double.parseDouble(BullIndex);
+            System.out.println("**************************"+type+"*************************************");
+            System.out.println("****************************"+rep+ "***********************************");
+            System.out.println("****************************"+ind+ "***********************************");
+            calfRep = (rep + ind)/2;
+            calfRep2 = String.valueOf(calfRep);
+            System.out.println(calfRep2+"***********************************"+calfRep);
+            textView99.setText(calfRep2);
+        }
+        else if(type.equals("BullsTerminal")){
+            double ter;
+            double ind1;
+            double calfter;
+            ter = Double.parseDouble(terminal);
+            ind1 = Double.parseDouble(BullIndex);
+            calfter = (ter + ind1)/2;
+
+            textView101.setText(String.valueOf(calfter));
+        }
+
     }
     public void SetDate(View v) {
         DialogFragment picker = new DateDialog();
@@ -71,6 +122,7 @@ public class Mating extends Activity implements DateDialog.TheListener{
         // TODO Auto-generated method stub
         System.out.println("********************************In function return***************************");
         textView49.setText(date);       //put in textviev
+        Confirm.setEnabled(true);
         datein = date;
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         Date datef = null;
@@ -98,6 +150,11 @@ public class Mating extends Activity implements DateDialog.TheListener{
 
         //System.out.println("Epoch representation of this date is: " + epoch);
     }
+    public void back(View view) {
+        finish();
+    }
+
+
     public void Confirm(View view) {
 
 

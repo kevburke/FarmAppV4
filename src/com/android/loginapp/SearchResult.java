@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.ofix.barcode.R;
 
 import java.util.logging.Level;
@@ -145,7 +146,10 @@ public class SearchResult extends Activity {
 
             db.setTransactionSuccessful();
         }catch (SQLException e){
-            //salary.setText("nope");
+            Toast.makeText(getBaseContext(), "Invalid Jumbo Try Again", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(SearchResult.this, Helloworld.class);
+            Bundle bundle = new Bundle();
+            startActivity(intent);
         }finally {
             db.endTransaction();
         }

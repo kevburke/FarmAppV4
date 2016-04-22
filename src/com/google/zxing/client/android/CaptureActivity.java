@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,20 +30,21 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.*;
 import android.widget.TextView;
+import com.android.loginapp.ResultActivity;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
 import com.google.zxing.client.android.camera.CameraManager;
-//import com.google.zxing.client.android.history.HistoryItem;
-//import com.google.zxing.client.android.history.HistoryManager;
-//import com.ofix.barcode.ProductData;
 import com.ofix.barcode.R;
-import com.android.loginapp.ResultActivity;
-//import com.ofix.barcode.RetrieveProductTask;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
+
+//import com.google.zxing.client.android.history.HistoryItem;
+//import com.google.zxing.client.android.history.HistoryManager;
+//import com.ofix.barcode.ProductData;
+//import com.ofix.barcode.RetrieveProductTask;
 
 /**
  * This activity opens the camera and does the actual scanning on a background thread. It draws a
@@ -76,6 +78,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   private Collection<BarcodeFormat> decodeFormats;
   private Map<DecodeHintType,?> decodeHints;
   private String characterSet;
+
+
   //private HistoryManager historyManager;
   private InactivityTimer inactivityTimer;
   private AmbientLightManager ambientLightManager;
@@ -89,6 +93,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   }
 
   CameraManager getCameraManager() {
+
     return cameraManager;
   }
 
@@ -98,8 +103,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     System.out.println("oncreate");
     Window window = getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-    setContentView(R.layout.capture);
 
+    setContentView(R.layout.capture);
+    //*************************************/
+
+/*********************************************/
     hasSurface = false;
     //historyManager = new HistoryManager(this);
     //historyManager.trimHistory();
@@ -221,7 +229,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
       default:
         return ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE;
     }
-   /* if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+    /*if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
       return ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
     } else setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);

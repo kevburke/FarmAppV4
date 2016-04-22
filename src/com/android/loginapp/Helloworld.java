@@ -30,6 +30,7 @@ public class Helloworld extends Activity {
     public static final String MY_PREFS = "SharedPreferences";
     public TextView textView;
     public EditText mEdit;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +56,7 @@ public class Helloworld extends Activity {
      */
     public void scanNow(View view) {
         logger.log(Level.INFO, "button works!");
+
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

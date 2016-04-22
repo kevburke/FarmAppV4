@@ -52,8 +52,10 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:hint="Enter Jumbo"
+				android:maxLength="3"
 				android:textStyle="bold"
-				android:id="@+id/editText2" android:layout_weight="0.91" android:backgroundTint="#eeeeee"/>
+				android:id="@+id/editText2" android:layout_weight="0.91"
+				android:numeric="integer" android:focusable="true"/>
 		<Button
                 android:layout_width="95dp"
                 android:layout_height="wrap_content"

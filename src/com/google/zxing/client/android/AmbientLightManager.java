@@ -18,10 +18,7 @@ package com.google.zxing.client.android;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.hardware.*;
 import android.preference.PreferenceManager;
 import com.google.zxing.client.android.camera.CameraManager;
 import com.google.zxing.client.android.camera.FrontLightMode;
@@ -34,8 +31,8 @@ import com.google.zxing.client.android.camera.FrontLightMode;
  */
 final class AmbientLightManager implements SensorEventListener {
 
-  private static final float TOO_DARK_LUX = 45.0f;
-  private static final float BRIGHT_ENOUGH_LUX = 450.0f;
+  private static final float TOO_DARK_LUX = 140.0f;
+  private static final float BRIGHT_ENOUGH_LUX = 380.0f;
 
   private final Context context;
   private CameraManager cameraManager;
@@ -47,12 +44,13 @@ final class AmbientLightManager implements SensorEventListener {
 
   void start(CameraManager cameraManager) {
     this.cameraManager = cameraManager;
+
     SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
     if (FrontLightMode.readPref(sharedPrefs) == FrontLightMode.AUTO) {
       SensorManager sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
       lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
       if (lightSensor != null) {
-        sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_FASTEST);
       }
     }
   }

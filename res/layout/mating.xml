@@ -15,8 +15,8 @@
             android:layout_weight="0.05"/>
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/layo">
+            android:layout_height="310dp"
+            android:id="@+id/layo" android:layout_weight="1.61">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,28 +109,6 @@
                 android:layout_alignTop="@+id/textView52"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"/>
-        <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                android:onClick="back"
-                android:id="@+id/button8"
-                android:layout_marginBottom="31dp"
-                android:layout_alignParentBottom="true" android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/textView60" android:layout_alignEnd="@+id/textView60"/>
-        <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Confirm"
-                android:onClick="Confirm"
-                android:id="@+id/Confirm"
-                android:layout_alignTop="@+id/button8"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_toRightOf="@+id/textView52"
-                android:layout_toEndOf="@+id/textView52"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -182,4 +160,40 @@
                 android:id="@+id/textView101"
                 android:layout_below="@+id/textView99" android:layout_alignStart="@+id/textView99"/>
     </RelativeLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+            android:id="@+id/sdf" android:weightSum="1">
+        <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:onClick="back"
+                android:id="@+id/button8"
+                android:layout_marginBottom="31dp"
+                android:layout_alignParentBottom="true" android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/textView60" android:layout_alignEnd="@+id/textView60"
+                android:layout_weight="1"/>
+        <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="31dp"
+                android:text="    Contact     "
+                android:onClick="Contact"
+                android:id="@+id/Contact"
+                android:layout_weight="0.29"/>
+        <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="113dp"
+                android:layout_marginBottom="31dp"
+                android:layout_height="wrap_content"
+                android:text="Confirm"
+                android:onClick="Confirm"
+                android:id="@+id/Confirm"
+                android:layout_toRightOf="@+id/textView52"
+                android:layout_toEndOf="@+id/textView52"/>
+    </LinearLayout>
 </LinearLayout>

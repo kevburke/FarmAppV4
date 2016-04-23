@@ -705,7 +705,7 @@ public class login extends Activity {
 		}
 		finally {
 			db.endTransaction();
-			Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
+			//Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
 		}
 
 	}

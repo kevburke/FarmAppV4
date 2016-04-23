@@ -69,6 +69,7 @@ public class BullPicked extends Activity  {
     Double CalfStar;
     Double CalfAcrossStar;
     String Gest;
+    String Supplier;
 
     SQLiteDatabase db;
     SQLiteDatabase db2;
@@ -228,6 +229,7 @@ public class BullPicked extends Activity  {
                 StarsWithin = cur.getString(7);
                 StarsAcross = cur.getString(8);
                 Gest =cur.getString(11);
+                Supplier = cur.getString(21);
                 db2.setTransactionSuccessful();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -251,6 +253,7 @@ public class BullPicked extends Activity  {
                 StarsWithin = cur.getString(7);
                 StarsAcross = cur.getString(8);
                 Gest =cur.getString(11);
+                Supplier = cur.getString(21);
                 db2.setTransactionSuccessful();
             } catch (SQLException e) {
 
@@ -318,6 +321,7 @@ public class BullPicked extends Activity  {
         bundle.putString("8",replacement);
         bundle.putString("9",type);
         bundle.putString("10",terminal);
+        bundle.putString("11",Supplier);
 
         intent.putExtras(bundle);
         startActivity(intent);

@@ -3,10 +3,15 @@ package com.android.loginapp;
 import android.app.*;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
@@ -26,6 +31,7 @@ import java.util.GregorianCalendar;
 public class Mating extends Activity implements DateDialog.TheListener{
 
     private static final int NOTE_ID = 100,NOTE_ID2 =101,NOTE_ID3 =102;
+    public static final String MY_PREFS = "SharedPreferences";
     TextView textView49;
     private RatingBar ratingBar7;
     private RatingBar ratingBar8;
@@ -34,6 +40,7 @@ public class Mating extends Activity implements DateDialog.TheListener{
     TextView textView56;
     TextView textView99;
     TextView textView101;
+    SQLiteDatabase db;
     long epoch;
     String str;
     String numID;
@@ -42,21 +49,32 @@ public class Mating extends Activity implements DateDialog.TheListener{
     String Code;
     String datein;
     Button Confirm;
+    Button Contact;
     String BullIndex;
     String  replacement;
     String terminal;
     String type;
+    String supplier;
     double calfRep=0;
     String calfRep2;
+    String num;
+    String mess;
+    String txtDate;
+    String table;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mating);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS, 0);
+        table = prefs.getString("username", "");
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         Confirm = (Button) findViewById(R.id.Confirm);
+        Contact = (Button) findViewById(R.id.Contact);
         ratingBar7 = (RatingBar) findViewById(R.id.ratingBar7);
         ratingBar8 = (RatingBar) findViewById(R.id.ratingBar8);
         double CalfStar;
@@ -71,9 +89,37 @@ public class Mating extends Activity implements DateDialog.TheListener{
         replacement =bundle.getString("8");
         type = bundle.getString("9");
         terminal = bundle.getString("10");
+        supplier = bundle.getString("11");
+
+
+
+        if(supplier.equals("Limousin Soc"))
+            num = "0868206051";
+        if(supplier.equals("Bova"))
+            num = "0868206051";
+        if(supplier.equals("Sligo AI"))
+            num = "0876530516";
+        if(supplier.equals("Powerful Genetics"))
+            num = "0868206051";
+        if(supplier.equals("NCBC"))
+            num = "0868206051";
+        if(supplier.equals("Dovea"))
+            num = "0868206051";
+        if(supplier.equals("Eurogene"))
+            num = "0868206051";
+        if(supplier.equals("Parthenais Soc"))
+            num = "0868206051";
+        if(supplier.equals("Charolais Soc"))
+            num = "0868206051";
+        if(supplier.equals("NCBC/Dovea"))
+            num = "0868206051";
+        if(supplier.equals("Celtic Sires"))
+            num = "0868206051";
+        if(supplier.equals("Hereford Soc"))
+            num = "0868206051";
 
         Confirm.setEnabled(false);
-
+        Contact.setEnabled(false);
         ratingBar7.setRating((int) CalfStar);
         ratingBar8.setRating((float) CalfAcrossStar);
         textView49 = (TextView) findViewById(R.id.textView49);
@@ -109,8 +155,10 @@ public class Mating extends Activity implements DateDialog.TheListener{
 
             textView101.setText(String.valueOf(calfter));
         }
+        addDataBaseTable();
 
     }
+
     public void SetDate(View v) {
         DialogFragment picker = new DateDialog();
         picker.show(getFragmentManager(), "datePicker");
@@ -122,8 +170,9 @@ public class Mating extends Activity implements DateDialog.TheListener{
         // TODO Auto-generated method stub
         System.out.println("********************************In function return***************************");
         textView49.setText(date);       //put in textviev
-        Confirm.setEnabled(true);
+        Contact.setEnabled(true);
         datein = date;
+        txtDate =date;
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         Date datef = null;
         try {
@@ -154,16 +203,22 @@ public class Mating extends Activity implements DateDialog.TheListener{
         finish();
     }
 
-
+    public void Contact(View view){
+        Confirm.setEnabled(true);
+        mess = "Please service "+numID+" with "+BullName+ " id "+ Code +" on "+txtDate + ". From  "+table+".";
+        sendSMS(num, mess);
+        Toast.makeText(getApplicationContext(), "Your Message is sent to "+supplier , Toast.LENGTH_LONG).show();
+        insertData();
+    }
     public void Confirm(View view) {
 
 
         handler.postDelayed(task, 10000);
-        Toast.makeText(this, "Notification will post in 10 seconds", Toast.LENGTH_SHORT).show();
-        handler2.postDelayed(task2, 15000);
-        Toast.makeText(this, "Notification will post in 15 seconds", Toast.LENGTH_SHORT).show();
-        handler3.postDelayed(task3, 30000);
-        Toast.makeText(this, "Notification will post in 30 seconds", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "notification will post in 10 seconds", Toast.LENGTH_SHORT).show();
+        handler2.postDelayed(task2, 30000);
+       // Toast.makeText(this, "notification will post in 30 seconds", Toast.LENGTH_SHORT).show();
+        handler3.postDelayed(task3, 60000);
+       // Toast.makeText(this, "notification will post in 60 seconds", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Mating.this, Finish.class);
             Bundle bundle = new Bundle();
 
@@ -200,7 +255,7 @@ public class Mating extends Activity implements DateDialog.TheListener{
                     .addExtras(bundle);
 
             Notification.BigPictureStyle style= new Notification.BigPictureStyle(builder);
-            style.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.cowicon));
+            style.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.notification));
             Notification note = builder.build();
             manager.notify(NOTE_ID, note);
         }
@@ -224,7 +279,7 @@ public class Mating extends Activity implements DateDialog.TheListener{
                     .setContentIntent(contentIntent);
 
             Notification.BigPictureStyle style= new Notification.BigPictureStyle(builder);
-            style.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.cowicon));
+            style.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.notification));
             Notification note = builder.build();
             manager.notify(NOTE_ID2, note);
         }
@@ -250,9 +305,69 @@ public class Mating extends Activity implements DateDialog.TheListener{
                     .setContentIntent(contentIntent);
 
             Notification.BigPictureStyle style= new Notification.BigPictureStyle(builder);
-            style.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.cowicon));
+            style.bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.notification));
             Notification note = builder.build();
             manager.notify(NOTE_ID3, note);
         }
     };
+
+        public void sendSMS(String phoneNumber, String message) {
+            SmsManager sms = SmsManager.getDefault();
+            sms.sendTextMessage(phoneNumber, null, message, null, null);
+        }
+    private void addDataBaseTable() {
+        db = openOrCreateDatabase("ICBF", MODE_PRIVATE, null);
+
+        db.beginTransaction();
+        try {
+           // db.execSQL("CREATE TABLE IF NOT EXISTS '"+"Calf"+table+"'");
+            //create table
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS '"+"Calf"+table+"("
+                    + " recID integer PRIMARY KEY autoincrement, "
+                    + " jumbo  text, "
+                    + " numID  text, "
+                    + " BullName  text, "
+                    + " Code  text, "
+                    + " MateDate  text, "
+                    + " Dob  text"
+                    + ");  ");
+
+            //commit your changes
+            db.setTransactionSuccessful();
+
+        } catch (SQLException e1) {
+
+        }
+        finally {
+            db.endTransaction();
+        }
+
+    }
+    private void insertData() {
+
+        db.beginTransaction();
+        try {
+
+            //insert rows
+                db.execSQL( "insert into Calf"+table+"(jumbo, numID, BullName, Code, MateDate, Dob) "
+                        + " values ('"+jumbo+
+                        "' , '"+numID+
+                        "' , '"+BullName+
+                        "' , '"+Code+
+                        "' , '"+datein+
+                        "' , '"+str+"');" );
+
+            //commit your changes
+            db.setTransactionSuccessful();
+
+        }
+        catch (SQLiteException e2) {
+        }
+        finally {
+            db.endTransaction();
+            Toast.makeText(getBaseContext(), "Calf DataBase Done", Toast.LENGTH_LONG).show();
+        }
+
+    }
 }

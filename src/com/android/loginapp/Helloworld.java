@@ -78,7 +78,7 @@ public class Helloworld extends Activity {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("Cow",jum);
         editor.apply();
-        String jumbo= "";
+        String jumbo= "blank";
         SharedPreferences prefs = getSharedPreferences(MY_PREFS, 0);
         String table = prefs.getString("username", "");
         SQLiteDatabase db = this.openOrCreateDatabase("ICBF", MODE_PRIVATE, null);
@@ -132,6 +132,10 @@ public class Helloworld extends Activity {
     public void MyHerd(View view) {
 
         Intent in = new Intent(Helloworld.this, MyHerd.class);
+        startActivity(in);
+    }
+    public void ViewMatings(View view){
+        Intent in = new Intent(Helloworld.this, ViewMatings.class);
         startActivity(in);
     }
 }

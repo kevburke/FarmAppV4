@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@android:color/background_light"
+              android:weightSum="1" android:id="@+id/lkj">
+    <RelativeLayout
+            android:layout_width="220dp"
+            android:layout_height="180dp"
+            android:orientation="vertical"
+            android:background="@android:color/darker_gray"
+            android:weightSum="1"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:id="@+id/relativeLayout"
+            android:layout_weight="0.13">
+        >
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                android:id="@+id/linearLayout">
+        </LinearLayout>
+        <Button
+                android:id="@+id/dismiss"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:text="Dismiss"
+                android:layout_weight="0.34"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/delete"/>
+        <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="103dp"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:id="@+id/delete"
+                android:layout_gravity="right"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Jumbo:"
+                android:id="@+id/textView103"
+                android:layout_alignParentTop="true" android:layout_alignEnd="@+id/textView107"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Animal id:"
+                android:id="@+id/textView104"
+                android:layout_alignTop="@+id/linearLayout" android:layout_alignEnd="@+id/textView103"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="BullName:"
+                android:id="@+id/textView105"
+                android:layout_below="@+id/textView104" android:layout_alignEnd="@+id/textView104"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Code:"
+                android:id="@+id/textView106"
+                android:layout_below="@+id/textView105" android:layout_alignEnd="@+id/textView105"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Service Date:"
+                android:id="@+id/textView107"
+                android:layout_below="@+id/textView106" android:layout_alignEnd="@+id/textView108"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Expected Dob:"
+                android:id="@+id/textView108" android:layout_below="@+id/textView107"
+                android:layout_alignParentStart="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/textView109"
+                android:layout_alignParentTop="true" android:layout_toEndOf="@+id/textView107"
+                android:layout_marginStart="22dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/textView110" android:layout_below="@+id/textView109"
+                android:layout_alignStart="@+id/textView109"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/textView111" android:layout_below="@+id/textView104"
+                android:layout_alignStart="@+id/textView110"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/textView112" android:layout_below="@+id/textView111"
+                android:layout_alignStart="@+id/textView111"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/textView113" android:layout_below="@+id/textView112"
+                android:layout_alignStart="@+id/textView112"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/textView114" android:layout_alignTop="@+id/textView108"
+                android:layout_alignStart="@+id/textView113"/>
+    </RelativeLayout>
+</LinearLayout>

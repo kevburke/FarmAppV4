@@ -15,7 +15,7 @@
 	<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="fill_parent"
-			android:layout_height="138dp"
+			android:layout_height="82dp"
 			android:id="@+id/lay"
 			android:weightSum="1">
 		<TextView android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
 	<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
-			android:layout_height="96dp"
+			android:layout_height="80dp"
 			android:weightSum="1"
 			android:id="@+id/lay2">
 		<TextView
@@ -78,7 +78,28 @@
 	</LinearLayout>
 	<RelativeLayout
 			android:layout_width="match_parent"
-			android:layout_height="479dp" android:id="@+id/rty">
+			android:layout_height="wrap_content" android:id="@+id/rty" android:layout_weight="0.52">
+		<TextView
+				android:layout_width="204dp"
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:text="View Active Bulls          "
+				android:textStyle="bold"
+				android:id="@+id/textView48"
+				android:layout_alignBottom="@+id/button2" android:layout_alignParentStart="true"/>
+		<Button android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Bull List"
+				android:textStyle="bold"
+				android:onClick="bullList"
+				android:id="@+id/button2"
+				android:layout_weight="0.50"
+				android:backgroundTint="#eeeeee"
+				android:layout_alignParentTop="true" android:layout_alignParentEnd="true"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="104dp" android:layout_gravity="center_horizontal">
 		<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -86,7 +107,7 @@
 				android:text="View Herd                    "
 				android:textStyle="bold"
 				android:id="@+id/textView63"
-				android:layout_marginTop="152dp"
+				android:layout_marginTop="33dp"
 				android:layout_alignParentTop="true" android:layout_alignParentStart="true"/>
 		<Button
 				android:layout_width="wrap_content"
@@ -95,25 +116,30 @@
 				android:textStyle="bold"
 				android:onClick="MyHerd"
 				android:id="@+id/button10" android:layout_gravity="right"
-				android:layout_alignBottom="@+id/textView63" android:layout_alignParentEnd="true"
-				android:visibility="visible" android:backgroundTint="#eeeeee"/>
+				android:visibility="visible" android:backgroundTint="#eeeeee"
+				android:layout_alignBottom="@+id/textView63" android:layout_alignParentEnd="true"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="78dp" android:layout_gravity="center_horizontal">
 		<TextView
-				android:layout_width="204dp"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:text="View Active Bulls          "
+				android:text="View Matings"
 				android:textStyle="bold"
-				android:id="@+id/textView48"
-				android:layout_alignParentTop="true" android:layout_alignEnd="@+id/textView63"
-				android:layout_marginTop="46dp"/>
-		<Button android:layout_width="wrap_content"
+				android:id="@+id/textView102"
+				android:layout_centerVertical="true"
+				android:layout_alignParentStart="true"/>
+		<Button
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Bull List"
+				android:text="Matings"
 				android:textStyle="bold"
-				android:onClick="bullList"
-				android:id="@+id/button2"
-				android:layout_weight="0.50"
-				android:layout_alignBottom="@+id/textView48" android:layout_alignParentEnd="true"
-				android:backgroundTint="#eeeeee" android:layout_alignStart="@+id/button10"/>
+				android:onClick="ViewMatings"
+				android:backgroundTint="#eeeeee"
+				android:id="@+id/button4"
+				android:layout_centerVertical="true"
+				android:layout_alignParentEnd="true"/>
 	</RelativeLayout>
 </LinearLayout>

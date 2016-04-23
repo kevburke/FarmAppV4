@@ -8,9 +8,10 @@
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <uses-sdk
-            android:minSdkVersion="21"
+            android:minSdkVersion="19"
             android:targetSdkVersion="21"/>
     <application android:icon="@drawable/cowicon"
                  android:label="@string/app_name2"
@@ -136,6 +137,7 @@
         <activity android:name="com.android.loginapp.NotificationReturn" android:label="Notification Return"/>
         <activity android:name="com.android.loginapp.MyHerd" android:label="My Herd"/>
         <activity android:name="com.android.loginapp.Splash" android:label="Farm Buddy"/>
+        <activity android:name="com.android.loginapp.ViewMatings" android:label="Matings"/>
     </application>
 
 </manifest>

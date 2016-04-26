@@ -285,5 +285,10 @@ public class BullSelect extends Activity {
     }
         );
     }
+    public void return1(View view){
+        Intent intent = new Intent(BullSelect.this, BullSearch.class);
+        startActivity(intent);
+
+    }
 
 }

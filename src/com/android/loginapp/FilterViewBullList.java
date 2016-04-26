@@ -356,8 +356,9 @@ public class FilterViewBullList extends Activity {
             }}
         );
     }
+    public void return1(View view){
+        Intent intent = new Intent(FilterViewBullList.this, ViewBullList.class);
+        startActivity(intent);
+
+    }
 }
-
-
-
-

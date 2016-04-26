@@ -160,6 +160,21 @@
                 android:text="N/A"
                 android:id="@+id/textView101"
                 android:layout_below="@+id/textView99" android:layout_alignStart="@+id/textView99"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:layout_marginBottom="41dp" android:text="Enter Number" android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Enter Desired rep Number or press contact to auto send"
+                android:id="@+id/textView115" android:layout_above="@+id/editText"
+                android:layout_alignEnd="@+id/editText" android:layout_alignStart="@+id/editText"/>
     </RelativeLayout>
     <LinearLayout
             android:orientation="horizontal"

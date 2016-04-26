@@ -13,10 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.SmsManager;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RatingBar;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import com.ofix.barcode.R;
 
 import java.text.ParseException;
@@ -33,6 +30,7 @@ public class Mating extends Activity implements DateDialog.TheListener{
     private static final int NOTE_ID = 100,NOTE_ID2 =101,NOTE_ID3 =102;
     public static final String MY_PREFS = "SharedPreferences";
     TextView textView49;
+    public EditText mEdit;
     private RatingBar ratingBar7;
     private RatingBar ratingBar8;
     TextView textView52;
@@ -70,7 +68,7 @@ public class Mating extends Activity implements DateDialog.TheListener{
         //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences prefs = getSharedPreferences(MY_PREFS, 0);
         table = prefs.getString("username", "");
-
+        mEdit   = (EditText)findViewById(R.id.editText);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         Confirm = (Button) findViewById(R.id.Confirm);
@@ -96,7 +94,7 @@ public class Mating extends Activity implements DateDialog.TheListener{
         if(supplier.equals("Limousin Soc"))
             num = "0868206051";
         if(supplier.equals("Bova"))
-            num = "0868206051";
+            num = "0863042453";
         if(supplier.equals("Sligo AI"))
             num = "0876530516";
         if(supplier.equals("Powerful Genetics"))
@@ -205,6 +203,13 @@ public class Mating extends Activity implements DateDialog.TheListener{
 
     public void Contact(View view){
         Confirm.setEnabled(true);
+        System.out.println("***************************"+mEdit.getText().toString());
+        if( mEdit.getText().toString().equals("Enter Number")){
+            System.out.println("*************************** inside IF statement");
+        }else {
+            System.out.println("*************************** inside else statement");
+            num = mEdit.getText().toString();
+        }
         mess = "Please service "+numID+" with "+BullName+ " id "+ Code +" on "+txtDate + ". From  "+table+".";
         sendSMS(num, mess);
         Toast.makeText(getApplicationContext(), "Your Message is sent to "+supplier , Toast.LENGTH_LONG).show();

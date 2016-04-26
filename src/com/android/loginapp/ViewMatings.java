@@ -57,6 +57,7 @@ public class ViewMatings extends Activity {
         try {
             Cursor cur = db.rawQuery("SELECT * FROM Calf" + table, null);// put all animal id's in arrayList
             if (cur.moveToFirst()) {
+                ii = 0;
                 while (!cur.isLast()) {
                     numID = cur.getString(2);
                     calfAdapter.add(cur.getString(2));
@@ -163,7 +164,8 @@ public class ViewMatings extends Activity {
                         try {
                             json.put("user",table);
                             json.put("delete", numID);
-                            String baseUrl = "http://10.12.11.250:8080/UpdateDatabase";
+                            //String baseUrl = "http://10.12.11.250:8080/UpdateDatabase";
+                            String baseUrl = "http://192.168.1.4:8080/UpdateDatabase";
                             new HttpAsyncTask().execute(baseUrl, json.toString());
 
                         } catch (JSONException e) {

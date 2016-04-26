@@ -161,8 +161,9 @@ public class Finish extends Activity {
             json.put("MateDate",MateDate);
             json.put("Dob",Dob);
             Log.d("BullSearch", "Configured");
-            String baseUrl = "http://10.12.11.250:8080/CalfDatabase";
-           // String baseUrl = "http://192.168.1.4:8080/CalfDatabase";
+
+            //String baseUrl = "http://10.12.11.250:8080/CalfDatabase";
+            String baseUrl = "http://192.168.1.4:8080/CalfDatabase";
             new HttpAsyncTask().execute(baseUrl, json.toString());
 
             Log.d("BullSearch", "sent");

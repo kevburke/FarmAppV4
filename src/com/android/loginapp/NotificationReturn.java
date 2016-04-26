@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.ofix.barcode.R;
 
 /**
@@ -51,11 +50,11 @@ public class NotificationReturn extends Activity {
             Dob1 = cur.getString(6);
             db.setTransactionSuccessful();
         }catch (SQLException e){
-            Toast.makeText(getBaseContext(), "DataBase Exception ", Toast.LENGTH_LONG).show();
+           // Toast.makeText(getBaseContext(), "DataBase Exception ", Toast.LENGTH_LONG).show();
 
         }finally {
             db.endTransaction();
-            Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
         }
         textView61.setText("DAM Jumbo: "+jumbo1+"\n Dam Id: "+ numID1+" \nSire: "+BullName1+"\n Sire ID: "+Code1+"\nMated: "+MateDate1+"\nDue Date: "+Dob1);
     }

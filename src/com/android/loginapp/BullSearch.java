@@ -281,7 +281,7 @@ public class BullSearch extends Activity implements AdapterView.OnItemSelectedLi
                     radioButton5.toggle();
             }
             else if(S.equals("Suppliers")){
-                radioButton4.setChecked(false);
+                radioButton5.setChecked(false);
 
             }
         }

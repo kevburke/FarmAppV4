@@ -255,8 +255,8 @@ public class login extends Activity {
 			json.put("username",outUser);
 			json.put("password",outPass);
 
-			String baseUrl = "http://10.12.11.250:8080/InputOutput";
-			//String baseUrl = "http://192.168.1.4:8080/InputOutput";
+			//String baseUrl = "http://10.12.11.250:8080/InputOutput";
+			String baseUrl = "http://192.168.1.4:8080/InputOutput";
 			new HttpAsyncTask().execute(baseUrl, json.toString());
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -597,7 +597,7 @@ public class login extends Activity {
 				e.printStackTrace();
 			}
 
-			Toast.makeText(getBaseContext(), "Data In!", Toast.LENGTH_LONG).show();
+		//	Toast.makeText(getBaseContext(), "Data In!", Toast.LENGTH_LONG).show();
 		}//on post execute
 	}//http async task
 	/**
@@ -863,7 +863,7 @@ public class login extends Activity {
 		}
 		finally {
 			db.endTransaction();
-			Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
+			//Toast.makeText(getBaseContext(), "DataBase Done", Toast.LENGTH_LONG).show();
 		}
 	}
 
@@ -956,7 +956,7 @@ public class login extends Activity {
 		}
 		finally {
 			db.endTransaction();
-			Toast.makeText(getBaseContext(), "DataBase Mat Done", Toast.LENGTH_LONG).show();
+			//Toast.makeText(getBaseContext(), "DataBase Mat Done", Toast.LENGTH_LONG).show();
 		}
 	}
 }

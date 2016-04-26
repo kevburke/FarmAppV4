@@ -137,12 +137,12 @@ public class Mating extends Activity implements DateDialog.TheListener{
 
             rep = Double.parseDouble(replacement);
             ind = Double.parseDouble(BullIndex);
-            System.out.println("**************************"+type+"*************************************");
-            System.out.println("****************************"+rep+ "***********************************");
-            System.out.println("****************************"+ind+ "***********************************");
+//            System.out.println("**************************"+type+"*************************************");
+//            System.out.println("****************************"+rep+ "***********************************");
+//            System.out.println("****************************"+ind+ "***********************************");
             calfRep = (rep + ind)/2;
             calfRep2 = String.valueOf(calfRep);
-            System.out.println(calfRep2+"***********************************"+calfRep);
+//            System.out.println(calfRep2+"***********************************"+calfRep);
             textView99.setText(calfRep2);
         }
         else if(type.equals("BullsTerminal")){
@@ -213,11 +213,11 @@ public class Mating extends Activity implements DateDialog.TheListener{
     public void Confirm(View view) {
 
 
-        handler.postDelayed(task, 10000);
+        handler.postDelayed(task, 25000);
        // Toast.makeText(this, "notification will post in 10 seconds", Toast.LENGTH_SHORT).show();
-        handler2.postDelayed(task2, 30000);
+        handler2.postDelayed(task2, 70000);
        // Toast.makeText(this, "notification will post in 30 seconds", Toast.LENGTH_SHORT).show();
-        handler3.postDelayed(task3, 60000);
+        handler3.postDelayed(task3, 120000);
        // Toast.makeText(this, "notification will post in 60 seconds", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Mating.this, Finish.class);
             Bundle bundle = new Bundle();
@@ -245,11 +245,11 @@ public class Mating extends Activity implements DateDialog.TheListener{
             Notification.Builder builder = new Notification.Builder(Mating.this);
             //Set notification information
             builder.setSmallIcon(R.drawable.cowicon)
-                    .setTicker("your cow needs attention")
+                    .setTicker("10 Day Check "+jumbo)
                     .setWhen(System.currentTimeMillis())
                     .setAutoCancel(true)
                     .setDefaults(Notification.DEFAULT_SOUND)
-                    .setContentTitle(jumbo+ " Check cow")
+                    .setContentTitle(jumbo+ "Needs a check-in")
                     .setContentText("Go to app")
                     .setContentIntent(contentIntent)
                     .addExtras(bundle);
@@ -270,7 +270,7 @@ public class Mating extends Activity implements DateDialog.TheListener{
             Notification.Builder builder = new Notification.Builder(Mating.this);
             //Set notification information
             builder.setSmallIcon(R.drawable.cowicon)
-                    .setTicker("Two")
+                    .setTicker("21 Day Check "+jumbo)
                     .setWhen(System.currentTimeMillis())
                     .setAutoCancel(true)
                     .setDefaults(Notification.DEFAULT_SOUND)
@@ -296,7 +296,7 @@ public class Mating extends Activity implements DateDialog.TheListener{
             Notification.Builder builder = new Notification.Builder(Mating.this);
             //Set notification information
             builder.setSmallIcon(R.drawable.cowicon)
-                    .setTicker("Three")
+                    .setTicker("Due Date approaching " +jumbo)
                     .setWhen(System.currentTimeMillis())
                     .setAutoCancel(true)
                     .setDefaults(Notification.DEFAULT_SOUND)

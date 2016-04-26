@@ -156,6 +156,8 @@ public class ViewMatings extends Activity {
                             db3.endTransaction();
                         }
 
+
+
                         JSONObject json = new JSONObject();
                         Log.d("BullSearch", "JSON CREAATED");
                         try {
@@ -199,7 +201,7 @@ public class ViewMatings extends Activity {
             protected void onPostExecute(String result) {
                 JSONObject jsonResult = null;
 
-                Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
+               // Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
             }//on post execute
         }//http async task
 

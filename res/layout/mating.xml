@@ -3,6 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@drawable/sky2"
               android:weightSum="1">
 
     <TextView
@@ -175,7 +176,7 @@
                 android:layout_marginBottom="31dp"
                 android:layout_alignParentBottom="true" android:layout_alignParentStart="true"
                 android:layout_toStartOf="@+id/textView60" android:layout_alignEnd="@+id/textView60"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:textColor="#FFFFFF"/>
         <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
@@ -184,7 +185,7 @@
                 android:text="    Contact     "
                 android:onClick="Contact"
                 android:id="@+id/Contact"
-                android:layout_weight="0.29"/>
+                android:layout_weight="0.29" android:textColor="#FFFFFF"/>
         <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="113dp"
@@ -194,6 +195,6 @@
                 android:onClick="Confirm"
                 android:id="@+id/Confirm"
                 android:layout_toRightOf="@+id/textView52"
-                android:layout_toEndOf="@+id/textView52"/>
+                android:layout_toEndOf="@+id/textView52" android:textColor="#FFFFFF"/>
     </LinearLayout>
 </LinearLayout>
